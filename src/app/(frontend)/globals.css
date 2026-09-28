@@ -12,8 +12,11 @@
   --color-accent: #c8963e;
   --color-accent-soft: #f3e7cf;
 
-  --font-sans: var(--font-body), 'PingFang SC', 'Microsoft YaHei', 'Noto Sans SC', system-ui, sans-serif;
-  --font-display: var(--font-heading), var(--font-body), 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  /* Montserrat / Be Vietnam Pro have no CJK glyphs. The site's Chinese is Traditional (zh-Hant), so Han characters
+     fall back to Traditional Chinese system fonts; `lang="zh-Hant"` also makes generic fallbacks pick TC shapes. */
+  --font-cjk: 'PingFang TC', 'Noto Sans TC', 'Noto Sans CJK TC', 'Source Han Sans TC', 'Microsoft JhengHei', 'Heiti TC';
+  --font-sans: var(--font-body), var(--font-cjk), system-ui, sans-serif;
+  --font-display: var(--font-heading), var(--font-body), var(--font-cjk), sans-serif;
 
   --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
   --ease-soft: cubic-bezier(0.22, 0.61, 0.36, 1);
@@ -40,7 +43,7 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-html[lang='zh'] body {
+html:lang(zh) body {
   line-height: 1.8;
 }
 
@@ -109,7 +112,10 @@ main {
   text-transform: uppercase;
   color: var(--color-brand);
 }
-html[lang='zh'] .section-title {
+.section-title--light {
+  color: #fff;
+}
+html:lang(zh) .section-title {
   letter-spacing: 0.04em;
 }
 
@@ -263,57 +269,16 @@ a:hover > .underline-grow {
   }
 }
 
-/* ---------- Fan-out cards (desktop): start stacked at the centre, spread to both sides ---------- */
+/* ---------- Logo carousel (drag / swipe; position written by PartnerMarquee) ---------- */
 
-.fan {
-  --gap: 12px;
-}
-.fan-card {
-  transition:
-    transform 1.25s var(--ease-out-expo),
-    opacity 0.9s var(--ease-soft);
-  transition-delay: calc(var(--dist) * 140ms + 80ms);
-}
-@media (scripting: enabled) {
-  .fan:not([data-shown]) .fan-card {
-    opacity: 0;
-    transform: translate3d(calc(var(--offset) * (100% + var(--gap))), 30px, 0) scale(0.86);
-    transition-duration: 0.6s;
-    transition-delay: 0ms;
-  }
-}
-
-/* ---------- Rotating prism (mobile services) ---------- */
-
-.prism-stage {
-  perspective: 1100px;
-  perspective-origin: 50% 40%;
+.logo-carousel {
   touch-action: pan-y;
   user-select: none;
   -webkit-user-select: none;
+  cursor: grab;
 }
-.prism-rotor {
-  transform-style: preserve-3d;
-  will-change: transform;
-}
-.prism-face {
-  backface-visibility: hidden;
-  -webkit-backface-visibility: hidden;
-  filter: brightness(var(--shade, 1));
-}
-
-/* ---------- Marquee ---------- */
-
-@keyframes marquee {
-  to {
-    transform: translate3d(-50%, 0, 0);
-  }
-}
-.marquee-track {
-  animation: marquee var(--marquee-duration, 40s) linear infinite;
-}
-.marquee:hover .marquee-track {
-  animation-play-state: paused;
+.logo-carousel:active {
+  cursor: grabbing;
 }
 
 /* ---------- Hero ---------- */
@@ -351,6 +316,17 @@ a:hover > .underline-grow {
 }
 .rise {
   animation: rise 1.1s var(--ease-out-expo) both;
+}
+
+/* Home service fan (ServiceTree): the centre panel's content swapping in */
+@keyframes fan-panel {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+}
+.fan-panel {
+  animation: fan-panel 0.35s var(--ease-out-expo) both;
 }
 
 @keyframes scroll-cue {
@@ -469,8 +445,7 @@ a:hover > .underline-grow {
     transition-delay: 0ms !important;
     scroll-behavior: auto !important;
   }
-  [data-reveal] > .reveal-inner,
-  .fan:not([data-shown]) .fan-card {
+  [data-reveal] > .reveal-inner {
     opacity: 1 !important;
     transform: none !important;
     filter: none !important;

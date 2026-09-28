@@ -12,6 +12,11 @@
     "generate:types": "cross-env NODE_OPTIONS=--no-deprecation payload generate:types",
     "generate:importmap": "cross-env NODE_OPTIONS=--no-deprecation payload generate:importmap",
     "seed": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/seed.ts",
+    "seed:force": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/seed.ts --force",
+    "update-content": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/update-content.ts",
+    "update-content:prune": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/update-content.ts --prune",
+    "cleanup-content": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/cleanup-content.ts",
+    "cleanup-content:apply": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/cleanup-content.ts --apply",
     "create-user": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/create-user.ts",
     "backup": "cross-env NODE_OPTIONS=--no-deprecation tsx scripts/backup.ts"
   },

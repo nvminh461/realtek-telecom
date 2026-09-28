@@ -3,17 +3,16 @@
  * so the site looks identical once a database is connected (SRS FR-15). Replace it with real content in the admin.
  *
  *   npm run seed            # refuses to run when content already exists
- *   npm run seed -- --force # wipes seeded collections first
+ *   npm run seed:force      # wipes seeded collections first (same as `-- --force`, which PowerShell drops)
  */
 import 'dotenv/config'
 import crypto from 'crypto'
-import { readFileSync } from 'fs'
-import path from 'path'
 import { getPayload, type Payload } from 'payload'
-import sharp from 'sharp'
 
 import * as content from '../src/demo/content'
 import config from '../src/payload.config'
+import { partnerLogoFile, photoFile } from './content-files'
+import { revalidateSite } from './revalidate'
 
 if (!process.env.DATABASE_URI) {
   console.error('Cần khai báo DATABASE_URI trong .env để seed dữ liệu.')
@@ -127,19 +126,13 @@ async function upload(name: string, data: Buffer, alt: content.L, mimetype: stri
   return media.id
 }
 
-async function fetchPhoto(id: string) {
-  const res = await fetch(`https://images.unsplash.com/photo-${id}?w=2400&q=80&fm=jpg&fit=max`)
-  if (!res.ok) throw new Error(`Không tải được ảnh ${id}: ${res.status}`)
-  return Buffer.from(await res.arrayBuffer())
-}
-
 const isoDaysAgo = (days: number) => new Date(Date.now() - days * 24 * 3600 * 1000).toISOString()
 
 /* ---------- guard ---------- */
 
 const existing = await payload.count({ collection: 'services', overrideAccess: true })
 if (existing.totalDocs > 0 && !force) {
-  console.log('Đã có dữ liệu. Chạy lại với --force để xoá và seed lại.')
+  console.log('Đã có dữ liệu. Chạy `npm run seed:force` để xoá và seed lại.')
   process.exit(0)
 }
 if (force) {
@@ -153,6 +146,7 @@ if (force) {
     'sliders',
     'banners',
     'partners',
+    'certificates',
     'media',
   ] as const) {
     await payload.delete({ collection, where: { id: { exists: true } }, context: ctx() })
@@ -163,13 +157,9 @@ if (force) {
 /* ---------- content ---------- */
 
 console.log('Đang tải ảnh mẫu…')
-for (const key of Object.keys(content.photos) as content.PhotoKey[]) {
-  mediaIds[key] = await upload(
-    `${key}.jpg`,
-    await fetchPhoto(content.photos[key]),
-    content.photoAlts[key],
-    'image/jpeg',
-  )
+for (const key of content.photoKeys) {
+  const file = photoFile(key)
+  mediaIds[key] = await upload(file.name, await file.data(), content.photoAlts[key], file.mimetype)
   process.stdout.write('.')
 }
 console.log(' xong')
@@ -185,8 +175,12 @@ for (const [i, c] of content.documentCategories.entries()) {
 
 for (const service of content.services) await createLocalized('services', service)
 for (const project of content.projects) await createLocalized('projects', project)
-for (const { daysAgo, category, ...post } of content.posts) {
-  await createLocalized('posts', { ...post, category: postCategoryIds[category], publishedAt: isoDaysAgo(daysAgo) })
+for (const { daysAgo, date, category, ...post } of content.posts) {
+  await createLocalized('posts', {
+    ...post,
+    category: postCategoryIds[category],
+    publishedAt: date ?? isoDaysAgo(daysAgo),
+  })
 }
 for (const { daysAgo, category, ...document } of content.documents) {
   await createLocalized('documents', {
@@ -212,21 +206,39 @@ console.log(
   `Dịch vụ: ${content.services.length}, dự án: ${content.projects.length}, tin tức: ${content.posts.length}, tài liệu: ${content.documents.length}`,
 )
 
-for (const [i, name] of content.partners.entries()) {
-  const svg = readFileSync(path.join(process.cwd(), 'public', content.partnerLogoPath(name)))
-  const logo = await upload(
-    `partner-${name.toLowerCase()}.png`,
-    await sharp(svg).png().toBuffer(),
-    { vi: name, en: name, zh: name },
-    'image/png',
-  )
-  await payload.create({ collection: 'partners', data: { name, logo, order: i, enabled: true }, context: ctx() })
+for (const [i, entry] of content.partners.entries()) {
+  const { name, group, url } = content.partnerInfo(entry)
+  const file = partnerLogoFile(entry)
+  const logo = await upload(file.name, await file.data(), { vi: name, en: name, zh: name }, file.mimetype)
+  await payload.create({
+    collection: 'partners',
+    data: { name, group, url, logo, order: i, enabled: true },
+    context: ctx(),
+  })
+}
+
+for (const [i, { title, image, orientation }] of content.certificates.entries()) {
+  const certificate = await payload.create({
+    collection: 'certificates',
+    locale: 'vi',
+    data: { title: title.vi, image: mediaIds[image.$photo], orientation, order: i, enabled: true },
+    context: ctx(),
+  })
+  for (const locale of translations) {
+    await payload.update({
+      collection: 'certificates',
+      id: certificate.id,
+      locale,
+      data: { title: title[locale] },
+      context: ctx(),
+    })
+  }
 }
 
 await setGlobal('site-settings', content.siteSettings)
 await setGlobal('home-page', content.homePage)
 await setGlobal('about-page', content.aboutPage)
-console.log('Đối tác, cấu hình chung, trang chủ, giới thiệu: xong')
+console.log('Đối tác, chứng chỉ, cấu hình chung, trang chủ, giới thiệu: xong')
 
 /* ---------- first admin ---------- */
 
@@ -242,16 +254,7 @@ if (users.totalDocs === 0) {
   console.log(`Tài khoản quản trị: ${email} / ${password}`)
 }
 
-// Clear the site's cache if the server is running; hooks cannot reach it from this process.
-try {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'}/next/revalidate`, {
-    method: 'POST',
-    headers: { 'x-revalidate-secret': process.env.PAYLOAD_SECRET || '' },
-  })
-  console.log(res.ok ? 'Đã làm mới cache website.' : `Không làm mới được cache (${res.status}).`)
-} catch {
-  console.log('Website chưa chạy: dữ liệu mới sẽ hiển thị khi khởi động server.')
-}
+await revalidateSite()
 
 console.log('Seed hoàn tất.')
 process.exit(0)

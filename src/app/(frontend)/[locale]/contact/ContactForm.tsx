@@ -142,7 +142,7 @@ export function ContactForm({ services }: Props) {
           <div
             className="cf-turnstile"
             data-sitekey={turnstileKey}
-            data-language={locale === 'zh' ? 'zh-cn' : locale}
+            data-language={locale === 'zh' ? 'zh-tw' : locale}
           />
         </>
       ) : null}

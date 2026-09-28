@@ -1,3 +1,5 @@
+import { useTranslations } from 'next-intl'
+
 import { Link } from '@/i18n/navigation'
 
 export type Crumb = { label: string; href?: string }
@@ -5,8 +7,9 @@ export type Crumb = { label: string; href?: string }
 export function Breadcrumbs({ items, tone = 'dark' }: { items: Crumb[]; tone?: 'dark' | 'light' }) {
   const muted = tone === 'light' ? 'text-white/65' : 'text-ink-soft'
   const strong = tone === 'light' ? 'text-white' : 'text-brand'
+  const t = useTranslations('nav')
   return (
-    <nav aria-label="Breadcrumb">
+    <nav aria-label={t('breadcrumb')}>
       <ol
         className={`flex flex-wrap items-center gap-x-2 gap-y-1 text-[12px] font-medium uppercase tracking-[0.14em] ${muted}`}
       >

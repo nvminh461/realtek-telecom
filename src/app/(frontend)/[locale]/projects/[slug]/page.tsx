@@ -85,12 +85,17 @@ export default async function ProjectPage({ params }: PageProps<'/[locale]/proje
       <section className="py-20 md:py-28">
         <div className="container-x grid gap-12 lg:grid-cols-12">
           {project.excerpt ? (
-            <Reveal variant="up" className="lg:col-span-4">
-              <p className="font-display text-xl font-semibold leading-snug text-brand md:text-2xl">
-                {project.excerpt}
-              </p>
-              <span aria-hidden className="mt-8 block h-px w-24 bg-accent" />
-            </Reveal>
+            <div className="lg:col-span-4">
+              {/* Stays in view while the (often longer) detail column scrolls past. */}
+              <div className="lg:sticky lg:top-[calc(var(--header-h)+24px)]">
+                <Reveal variant="up">
+                  <p className="font-display text-xl font-semibold leading-snug text-brand md:text-2xl">
+                    {project.excerpt}
+                  </p>
+                  <span aria-hidden className="mt-8 block h-px w-24 bg-accent" />
+                </Reveal>
+              </div>
+            </div>
           ) : null}
           <article className={project.excerpt ? 'lg:col-span-8' : 'lg:col-span-12'}>
             <Reveal variant="up" delay={120}>

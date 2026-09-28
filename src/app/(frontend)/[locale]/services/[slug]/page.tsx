@@ -44,6 +44,7 @@ export default async function ServicePage({ params }: PageProps<'/[locale]/servi
     getTranslations({ locale, namespace: 'common' }),
   ])
   const others = all.filter((s) => s.id !== service.id)
+  const groups = service.groups ?? []
   const url = absoluteUrl(`/services/${slug}`, locale)
 
   return (
@@ -67,6 +68,54 @@ export default async function ServicePage({ params }: PageProps<'/[locale]/servi
             <Reveal variant="up">
               <RichText data={service.content} />
             </Reveal>
+            {groups.length ? (
+              groups.some((g) => g.items?.length) ? (
+                <ol className="mt-12 space-y-10">
+                  {groups.map((g, i) => (
+                    <li key={g.id ?? i}>
+                      <Reveal variant="up">
+                        <h2 className="flex items-baseline gap-4 border-b border-line pb-3 font-display text-lg font-bold uppercase tracking-[0.04em] text-brand">
+                          <span className="tabular-nums text-accent">{String(i + 1).padStart(2, '0')}</span>
+                          {g.title}
+                        </h2>
+                        {g.items?.length ? (
+                          <ul className="mt-5 grid gap-x-8 gap-y-3 sm:grid-cols-2">
+                            {g.items.map((item, j) => (
+                              <li key={item.id ?? j} className="relative pl-5 text-[16px] text-ink">
+                                <span
+                                  aria-hidden
+                                  className="absolute left-0 top-[0.65em] h-1.5 w-1.5 rounded-full bg-accent"
+                                />
+                                {item.title}
+                              </li>
+                            ))}
+                          </ul>
+                        ) : null}
+                      </Reveal>
+                    </li>
+                  ))}
+                </ol>
+              ) : (
+                <ul className="mt-12 grid gap-px border border-line bg-line sm:grid-cols-2">
+                  {groups.map((g, i) => (
+                    <li key={g.id ?? i} className="bg-white">
+                      <Reveal
+                        variant="up"
+                        delay={Math.min(i, 6) * 50}
+                        innerClassName="flex items-center gap-4 p-5 md:p-6"
+                      >
+                        <span className="font-display text-sm font-semibold tabular-nums text-accent">
+                          {String(i + 1).padStart(2, '0')}
+                        </span>
+                        <span className="font-display text-[15px] font-bold uppercase tracking-[0.03em] text-brand">
+                          {g.title}
+                        </span>
+                      </Reveal>
+                    </li>
+                  ))}
+                </ul>
+              )
+            ) : null}
             <div className="mt-12 border-t border-line pt-8">
               <ShareButtons url={url} title={service.title} />
             </div>

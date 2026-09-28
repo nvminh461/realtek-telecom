@@ -10,7 +10,8 @@ import { QuickContact } from '@/components/layout/QuickContact'
 import { SiteFooter } from '@/components/layout/SiteFooter'
 import { SiteHeader, type NavItem } from '@/components/layout/SiteHeader'
 import { Logo } from '@/components/Logo'
-import { isLocale } from '@/i18n/routing'
+import { htmlLang, isLocale } from '@/i18n/routing'
+import { logoFor, realtekLogo } from '@/lib/brand'
 import { getHeader, getSiteSettings } from '@/lib/data'
 import { resolveImage } from '@/lib/media'
 import { siteUrl } from '@/lib/site'
@@ -67,10 +68,11 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
   if (!isLocale(locale)) notFound()
   setRequestLocale(locale)
 
-  const [settings, header, t, draft] = await Promise.all([
+  const [settings, header, t, tCommon, draft] = await Promise.all([
     getSiteSettings(locale),
     getHeader(locale),
     getTranslations({ locale, namespace: 'nav' }),
+    getTranslations({ locale, namespace: 'common' }),
     draftMode(),
   ])
 
@@ -91,13 +93,13 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
     : defaultNav
 
   const name = settings.shortName || 'Realtek Telecom'
-  const logoImage = resolveImage(settings.logo)
+  const logoImage = resolveImage(settings.logo) ?? { url: realtekLogo.src }
   const organization = {
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: settings.companyName || name,
     url: siteUrl,
-    logo: logoImage ? new URL(logoImage.url, siteUrl).toString() : undefined,
+    logo: new URL(logoImage.url, siteUrl).toString(),
     email: settings.email || undefined,
     telephone: settings.hotline || undefined,
     address: settings.address || undefined,
@@ -105,7 +107,11 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
   }
 
   return (
-    <html lang={locale} data-scroll-behavior="smooth" className={`${bodyFont.variable} ${headingFont.variable}`}>
+    <html
+      lang={htmlLang[locale]}
+      data-scroll-behavior="smooth"
+      className={`${bodyFont.variable} ${headingFont.variable}`}
+    >
       <body>
         <NextIntlClientProvider>
           <a
@@ -116,19 +122,19 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
           </a>
           {draft.isEnabled ? (
             <div className="fixed bottom-4 left-4 z-[60] flex items-center gap-3 bg-ink px-4 py-2 text-xs text-white shadow-lg">
-              Đang xem bản nháp
+              {tCommon('draft')}
               {/* Route handler, not a page: needs a full request so the draft-mode cookie is cleared. */}
               {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
               <a href="/next/exit-preview" className="font-semibold text-accent underline">
-                Thoát
+                {tCommon('exitDraft')}
               </a>
             </div>
           ) : null}
           <SiteHeader
             items={nav}
             hotline={settings.hotline}
-            logo={<Logo logo={settings.logo} name={name} />}
-            logoLight={<Logo logo={settings.logoLight} tone="light" name={name} />}
+            logo={<Logo {...logoFor(settings, 'dark')} name={name} />}
+            logoLight={<Logo {...logoFor(settings, 'light')} name={name} />}
           />
           <main id="main">{children}</main>
           <SiteFooter locale={locale} fallbackLinks={[{ label: t('home'), href: '/' }, ...defaultNav]} />

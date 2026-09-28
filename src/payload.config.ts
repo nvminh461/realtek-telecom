@@ -14,6 +14,7 @@ import { DocumentCategories, PostCategories } from './collections/Categories'
 import { ContactSubmissions } from './collections/ContactSubmissions'
 import { Documents } from './collections/Documents'
 import { Media } from './collections/Media'
+import { Certificates } from './collections/Certificates'
 import { Partners } from './collections/Partners'
 import { Posts } from './collections/Posts'
 import { Projects } from './collections/Projects'
@@ -42,10 +43,17 @@ export default buildConfig({
   admin: {
     user: Users.slug,
     importMap: { baseDir: path.resolve(dirname) },
-    meta: { titleSuffix: ' — Quản trị Realtek' },
+    meta: {
+      titleSuffix: ' — Quản trị Realtek',
+      icons: [{ rel: 'icon', type: 'image/png', url: '/brand/realtek-icon.png' }],
+    },
     dateFormat: 'dd/MM/yyyy HH:mm',
     components: {
       beforeDashboard: ['@/components/admin/CrmLink#CrmLink'],
+      graphics: {
+        Icon: '@/components/admin/AdminIcon#AdminIcon',
+        Logo: '@/components/admin/AdminLogo#AdminLogo',
+      },
     },
   },
   i18n: {
@@ -56,7 +64,7 @@ export default buildConfig({
     locales: [
       { code: 'vi', label: 'Tiếng Việt' },
       { code: 'en', label: 'English' },
-      { code: 'zh', label: '中文' },
+      { code: 'zh', label: '繁體中文' },
     ],
     defaultLocale: 'vi',
     fallback: true,
@@ -72,6 +80,7 @@ export default buildConfig({
     Sliders,
     Banners,
     Partners,
+    Certificates,
     ContactSubmissions,
     Users,
   ],

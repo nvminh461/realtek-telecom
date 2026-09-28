@@ -5,7 +5,7 @@ import { useEffect, useRef, useState, type ReactNode } from 'react'
 
 import { Chevron, Close, Menu, Phone } from '@/components/Icons'
 import { Link, usePathname } from '@/i18n/navigation'
-import { locales } from '@/i18n/routing'
+import { htmlLang, locales } from '@/i18n/routing'
 import { isExternalUrl } from '@/lib/site'
 
 export type NavItem = { label: string; href: string; children?: { label: string; href: string }[] }
@@ -123,7 +123,7 @@ export function SiteHeader({ items, logo, logoLight, hotline }: Props) {
             {transparent ? logoLight : logo}
           </Link>
 
-          <nav aria-label="Main" className="hidden lg:block">
+          <nav aria-label={t('main')} className="hidden lg:block">
             <ul className={`flex items-center gap-8 ${tone}`}>
               {items.map((item) => {
                 const active = isActive(pathname, item.href)
@@ -169,7 +169,8 @@ export function SiteHeader({ items, logo, logoLight, hotline }: Props) {
                   key={l}
                   href={pathname}
                   locale={l}
-                  hrefLang={l}
+                  hrefLang={htmlLang[l]}
+                  lang={htmlLang[l]}
                   aria-current={l === locale ? 'true' : undefined}
                   className={[
                     'grid h-8 min-w-9 place-items-center border px-2 font-display text-[11px] font-semibold tracking-wider transition-colors',
@@ -246,6 +247,8 @@ export function SiteHeader({ items, logo, logoLight, hotline }: Props) {
                   key={l}
                   href={pathname}
                   locale={l}
+                  hrefLang={htmlLang[l]}
+                  lang={htmlLang[l]}
                   className={`grid h-9 min-w-10 place-items-center border px-2 text-xs font-semibold ${
                     l === locale ? 'border-white bg-white text-brand' : 'border-white/30'
                   }`}

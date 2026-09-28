@@ -2,7 +2,8 @@
  * The site's data reads (re-exported by src/lib/data.ts), built from src/demo/content.ts.
  * Signatures match the Payload implementation in src/cms/data.ts so the two are interchangeable.
  * Documents are shaped like Payload's (generated types), so pages and components need no changes.
- * Photos are served straight from Unsplash at the same sizes Payload would generate.
+ * Photos are served straight from Unsplash at the same sizes Payload would generate; local photos and partner
+ * logos are served from public/ as they are.
  */
 import type { PaginatedDocs } from 'payload'
 
@@ -12,6 +13,7 @@ import { normalizeSearch } from '@/lib/text'
 import type {
   AboutPage,
   Banner,
+  Certificate,
   DocumentCategory,
   Footer,
   Header,
@@ -42,6 +44,20 @@ function unsplash(id: string, width: number, height: number) {
 }
 
 function photoMedia(key: content.PhotoKey, locale: Locale): Media {
+  if (content.isLocalPhoto(key)) {
+    const { src, width, height } = content.localPhotos[key]
+    return {
+      id: `photo-${key}`,
+      alt: content.photoAlts[key][locale],
+      url: src,
+      width,
+      height,
+      mimeType: src.endsWith('.png') ? 'image/png' : 'image/jpeg',
+      filename: src.slice(src.lastIndexOf('/') + 1),
+      createdAt: stamp,
+      updatedAt: stamp,
+    }
+  }
   const id = content.photos[key]
   const size = (name: keyof typeof sizes) => ({
     url: unsplash(id, sizes[name][0], sizes[name][1]),
@@ -104,12 +120,12 @@ function projectsFor(locale: Locale): Project[] {
 function postsFor(locale: Locale): Post[] {
   const categories = postCategoriesFor(locale)
   return content.posts.map(
-    ({ daysAgo, category, ...p }) =>
+    ({ daysAgo, date, category, ...p }) =>
       ({
         id: `post-${p.slug}`,
         ...loc<object>(p, locale),
         category: categories.find((c) => c.slug === category) ?? null,
-        publishedAt: isoDaysAgo(daysAgo),
+        publishedAt: date ?? isoDaysAgo(daysAgo),
         ...published,
       }) as Post,
   )
@@ -186,22 +202,40 @@ export async function getSlider(placement: string, locale: Locale): Promise<Slid
 export const getBanners: (placement: BannerPlacement, locale: Locale) => Promise<Banner[]> = async () => []
 
 export async function getPartners(): Promise<Partner[]> {
-  return content.partners.map((name, i) => ({
-    id: `partner-${i}`,
-    name,
-    order: i,
-    enabled: true,
-    logo: {
-      id: `partner-logo-${i}`,
-      alt: name,
-      url: content.partnerLogoPath(name),
-      width: 520,
-      height: 140,
-      mimeType: 'image/svg+xml',
-      filename: `${name.toLowerCase()}.svg`,
+  return content.partners.map((entry, i) => {
+    const { name, group, url, src, filename, width, height } = content.partnerInfo(entry)
+    return {
+      id: `partner-${i}`,
+      name,
+      group,
+      url: url ?? null,
+      order: i,
+      enabled: true,
+      logo: {
+        id: `partner-logo-${i}`,
+        alt: name,
+        url: src,
+        width,
+        height,
+        mimeType: 'image/png',
+        filename,
+        createdAt: stamp,
+        updatedAt: stamp,
+      },
       createdAt: stamp,
       updatedAt: stamp,
-    },
+    }
+  })
+}
+
+export async function getCertificates(locale: Locale): Promise<Certificate[]> {
+  return content.certificates.map((entry, i) => ({
+    id: `certificate-${i}`,
+    title: entry.title[locale],
+    image: photoMedia(entry.image.$photo, locale),
+    orientation: entry.orientation,
+    order: i,
+    enabled: true,
     createdAt: stamp,
     updatedAt: stamp,
   }))

@@ -4,12 +4,13 @@ import { notFound } from 'next/navigation'
 import { getTranslations, setRequestLocale } from 'next-intl/server'
 
 import { BannerSlot } from '@/components/BannerSlot'
+import { CertificatesSection } from '@/components/CertificatesSection'
 import { DocumentRow, PostCard } from '@/components/cards'
 import { CountUp } from '@/components/home/CountUp'
-import { FanCards, type FanCard } from '@/components/home/FanCards'
 import { HeroSlider } from '@/components/home/HeroSlider'
 import { Parallax } from '@/components/home/Parallax'
 import { ProjectAccordion, type AccordionItem } from '@/components/home/ProjectAccordion'
+import { ServiceTree, type ServiceTreeCard } from '@/components/home/ServiceTree'
 import { ArrowRight, Search } from '@/components/Icons'
 import { Img } from '@/components/Img'
 import { toHeroSlides } from '@/components/PageHero'
@@ -56,12 +57,14 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
     : featuredServices.slice(0, 5)
   const projects = pickDocs<Project>(home.projects).length ? pickDocs<Project>(home.projects) : featuredProjects.docs
 
-  const fanCards: FanCard[] = services.map((s) => ({
+  const serviceCards: ServiceTreeCard[] = services.map((s) => ({
     id: String(s.id),
     href: `/services/${s.slug}`,
     title: s.title,
     excerpt: s.excerpt,
-    image: resolveImage(s.featuredImage, 'card', s.title),
+    image: resolveImage(s.featuredImage, 'wide', s.title),
+    nodes: (s.groups ?? []).map((g) => ({ title: g.title, items: (g.items ?? []).map((item) => item.title) })),
+    nodesLabel: t('serviceNodes', { count: s.groups?.length ?? 0 }),
   }))
   const accordion: AccordionItem[] = projects.map((p) => ({
     id: String(p.id),
@@ -70,6 +73,12 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
     meta: [p.field, p.location].filter(Boolean).join(' · '),
     image: resolveImage(p.featuredImage, 'wide', p.title),
   }))
+
+  // Partners saved before the `group` field existed count as featured partners.
+  const partnerRows = [
+    { key: 'product', title: 'productsTitle' as const, items: partners.filter((p) => p.group === 'product') },
+    { key: 'partner', title: 'partnersTitle' as const, items: partners.filter((p) => p.group !== 'product') },
+  ].filter((row) => row.items.length)
 
   const intro = home.intro
   const highlight = home.highlight
@@ -160,8 +169,8 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
         </section>
       ) : null}
 
-      {/* Services: cards fan out from the centre */}
-      {fanCards.length ? (
+      {/* Services: one card per service line; its categories unfold as nodes */}
+      {serviceCards.length ? (
         <section className="bg-paper py-24 md:py-32">
           <div className="container-x">
             <SectionHeading
@@ -170,7 +179,7 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
               action={{ label: tc('viewAll'), href: '/services' }}
               className="mb-12 md:mb-16"
             />
-            <FanCards cards={fanCards} />
+            <ServiceTree cards={serviceCards} detailLabel={tc('viewDetail')} />
           </div>
         </section>
       ) : null}
@@ -319,17 +328,25 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
         </section>
       ) : null}
 
-      {/* Partners */}
-      {partners.length ? (
-        <section className="border-t border-line bg-white py-20">
-          <div className="container-x mb-10">
-            <Reveal variant="mask-x">
-              <p className="eyebrow">{t('partnersTitle')}</p>
-            </Reveal>
+      <CertificatesSection locale={locale} eyebrow={t('eyebrow')} className="bg-white" />
+
+      {/* Main product brands and featured partners: two logo rows running in opposite directions */}
+      {partnerRows.length ? (
+        <section className="border-t border-line bg-paper py-20 md:py-24">
+          <div className="space-y-14">
+            {partnerRows.map((row, i) => (
+              <div key={row.key}>
+                <div className="container-x mb-8">
+                  <Reveal variant="mask-x">
+                    <h2 className="eyebrow">{t(row.title)}</h2>
+                  </Reveal>
+                </div>
+                <Reveal variant="up">
+                  <PartnerMarquee partners={row.items} reverse={i % 2 === 1} />
+                </Reveal>
+              </div>
+            ))}
           </div>
-          <Reveal variant="up">
-            <PartnerMarquee partners={partners} />
-          </Reveal>
         </section>
       ) : null}
 

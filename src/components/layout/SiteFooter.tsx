@@ -5,6 +5,7 @@ import { Logo } from '@/components/Logo'
 import { Reveal } from '@/components/reveal/Reveal'
 import { SmartLink } from '@/components/SmartLink'
 import type { Locale } from '@/i18n/routing'
+import { logoFor } from '@/lib/brand'
 import { getFooter, getSiteSettings } from '@/lib/data'
 
 import type { NavItem } from './SiteHeader'
@@ -40,7 +41,7 @@ export async function SiteFooter({ locale, fallbackLinks }: { locale: Locale; fa
 
       <div className="container-x relative grid gap-12 py-16 md:grid-cols-12 md:py-20">
         <Reveal className="md:col-span-5" variant="up">
-          <Logo logo={settings.logoLight} tone="light" name={settings.shortName ?? undefined} />
+          <Logo {...logoFor(settings, 'light')} name={settings.shortName ?? undefined} />
           {settings.tagline ? (
             <p className="mt-6 font-display text-sm font-semibold uppercase tracking-[0.14em] text-accent">
               {settings.tagline}

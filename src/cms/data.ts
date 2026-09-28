@@ -8,7 +8,7 @@ import type { Where } from 'payload'
 
 import type { Locale } from '@/i18n/routing'
 import type { BannerPlacement } from '@/collections/Banners'
-import type { Banner, LibraryDocument, Partner, Post, Project, Service, Slider } from '@/payload-types'
+import type { Banner, Certificate, LibraryDocument, Partner, Post, Project, Service, Slider } from '@/payload-types'
 
 import { getPayloadClient } from './payload'
 import { escapeRegex, normalizeSearch } from '@/lib/text'
@@ -109,7 +109,22 @@ export const getPartners = () =>
       collection: 'partners',
       where: { enabled: { equals: true } },
       depth: 1,
-      limit: 40,
+      limit: 100,
+      sort: 'order',
+    })
+    return docs
+  })
+
+export const getCertificates = (locale: Locale) =>
+  cached(['certificates', locale], ['certificates', 'media'], async (): Promise<Certificate[]> => {
+    const { docs } = await (
+      await getPayloadClient()
+    ).find({
+      collection: 'certificates',
+      where: { enabled: { equals: true } },
+      locale,
+      depth: 1,
+      pagination: false,
       sort: 'order',
     })
     return docs

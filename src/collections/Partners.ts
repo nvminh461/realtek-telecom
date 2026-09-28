@@ -9,7 +9,7 @@ export const Partners: CollectionConfig = {
   admin: {
     useAsTitle: 'name',
     group: 'Hiển thị',
-    defaultColumns: ['name', 'order', 'enabled'],
+    defaultColumns: ['name', 'group', 'order', 'enabled'],
     hidden: hiddenForContributor,
   },
   defaultSort: 'order',
@@ -21,6 +21,18 @@ export const Partners: CollectionConfig = {
   },
   fields: [
     { name: 'name', label: 'Tên đối tác', type: 'text', required: true },
+    {
+      name: 'group',
+      label: 'Nhóm',
+      type: 'select',
+      required: true,
+      defaultValue: 'partner',
+      options: [
+        { label: 'Đối tác tiêu biểu', value: 'partner' },
+        { label: 'Sản phẩm chính (thương hiệu)', value: 'product' },
+      ],
+      admin: { position: 'sidebar' },
+    },
     { name: 'logo', label: 'Logo', type: 'upload', relationTo: 'media', required: true },
     { name: 'url', label: 'Website', type: 'text' },
     { name: 'enabled', label: 'Hiển thị', type: 'checkbox', defaultValue: true, admin: { position: 'sidebar' } },

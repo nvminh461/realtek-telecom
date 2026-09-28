@@ -77,6 +77,7 @@ export interface Config {
     sliders: Slider;
     banners: Banner;
     partners: Partner;
+    certificates: Certificate;
     'contact-submissions': ContactSubmission;
     users: User;
     'payload-kv': PayloadKv;
@@ -96,6 +97,7 @@ export interface Config {
     sliders: SlidersSelect<false> | SlidersSelect<true>;
     banners: BannersSelect<false> | BannersSelect<true>;
     partners: PartnersSelect<false> | PartnersSelect<true>;
+    certificates: CertificatesSelect<false> | CertificatesSelect<true>;
     'contact-submissions': ContactSubmissionsSelect<false> | ContactSubmissionsSelect<true>;
     users: UsersSelect<false> | UsersSelect<true>;
     'payload-kv': PayloadKvSelect<false> | PayloadKvSelect<true>;
@@ -172,6 +174,21 @@ export interface Service {
     };
     [k: string]: unknown;
   } | null;
+  /**
+   * Hiện thành các nút trên thẻ dịch vụ ở trang chủ và thành danh sách ở trang chi tiết. Mỗi hạng mục có thể có các mục con.
+   */
+  groups?:
+    | {
+        title: string;
+        items?:
+          | {
+              title: string;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
   featuredImage: string | Media;
   gallery?: (string | Media)[] | null;
   /**
@@ -549,8 +566,28 @@ export interface Banner {
 export interface Partner {
   id: string;
   name: string;
+  group: 'partner' | 'product';
   logo: string | Media;
   url?: string | null;
+  enabled?: boolean | null;
+  order?: number | null;
+  updatedAt: string;
+  createdAt: string;
+}
+/**
+ * Hiển thị ở trang chủ và trang giới thiệu theo thứ tự: 20 chứng chỉ đầu tiên, các chứng chỉ còn lại hiện khi bấm "Xem thêm".
+ *
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "certificates".
+ */
+export interface Certificate {
+  id: string;
+  title: string;
+  image: string | Media;
+  /**
+   * Ảnh dọc chiếm 1 ô, ảnh ngang chiếm 2 ô cùng chiều cao; lưới tự sắp xếp để không có ô trống.
+   */
+  orientation: 'portrait' | 'landscape';
   enabled?: boolean | null;
   order?: number | null;
   updatedAt: string;
@@ -642,6 +679,10 @@ export interface PayloadLockedDocument {
         value: string | Partner;
       } | null)
     | ({
+        relationTo: 'certificates';
+        value: string | Certificate;
+      } | null)
+    | ({
         relationTo: 'contact-submissions';
         value: string | ContactSubmission;
       } | null)
@@ -699,6 +740,18 @@ export interface ServicesSelect<T extends boolean = true> {
   title?: T;
   excerpt?: T;
   content?: T;
+  groups?:
+    | T
+    | {
+        title?: T;
+        items?:
+          | T
+          | {
+              title?: T;
+              id?: T;
+            };
+        id?: T;
+      };
   featuredImage?: T;
   gallery?: T;
   seo?:
@@ -956,8 +1009,22 @@ export interface BannersSelect<T extends boolean = true> {
  */
 export interface PartnersSelect<T extends boolean = true> {
   name?: T;
+  group?: T;
   logo?: T;
   url?: T;
+  enabled?: T;
+  order?: T;
+  updatedAt?: T;
+  createdAt?: T;
+}
+/**
+ * This interface was referenced by `Config`'s JSON-Schema
+ * via the `definition` "certificates_select".
+ */
+export interface CertificatesSelect<T extends boolean = true> {
+  title?: T;
+  image?: T;
+  orientation?: T;
   enabled?: T;
   order?: T;
   updatedAt?: T;
@@ -1151,7 +1218,45 @@ export interface AboutPage {
         id?: string | null;
       }[]
     | null;
-  certificates?: (string | Media)[] | null;
+  productLines?:
+    | {
+        title: string;
+        items?:
+          | {
+              title: string;
+              id?: string | null;
+            }[]
+          | null;
+        note?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  offices?:
+    | {
+        name: string;
+        address: string;
+        phone?: string | null;
+        id?: string | null;
+      }[]
+    | null;
+  teamIntro?: string | null;
+  teams?:
+    | {
+        title: string;
+        members?:
+          | {
+              name: string;
+              role?: string | null;
+              /**
+               * Mỗi dòng là một ý (chứng chỉ, phụ trách, kinh nghiệm…).
+               */
+              details?: string | null;
+              id?: string | null;
+            }[]
+          | null;
+        id?: string | null;
+      }[]
+    | null;
   /**
    * Để trống thì hệ thống dùng tiêu đề, tóm tắt và ảnh đại diện.
    */
@@ -1173,8 +1278,17 @@ export interface SiteSetting {
   shortName?: string | null;
   tagline?: string | null;
   description?: string | null;
+  /**
+   * Để trống để dùng logo RealTek có sẵn. Dùng chung cho cả 3 ngôn ngữ.
+   */
   logo?: (string | null) | Media;
+  /**
+   * Để trống để dùng logo RealTek trắng có sẵn.
+   */
   logoLight?: (string | null) | Media;
+  /**
+   * Để trống để dùng biểu tượng chữ R của logo RealTek.
+   */
   favicon?: (string | null) | Media;
   taxCode?: string | null;
   address?: string | null;
@@ -1340,7 +1454,42 @@ export interface AboutPageSelect<T extends boolean = true> {
         text?: T;
         id?: T;
       };
-  certificates?: T;
+  productLines?:
+    | T
+    | {
+        title?: T;
+        items?:
+          | T
+          | {
+              title?: T;
+              id?: T;
+            };
+        note?: T;
+        id?: T;
+      };
+  offices?:
+    | T
+    | {
+        name?: T;
+        address?: T;
+        phone?: T;
+        id?: T;
+      };
+  teamIntro?: T;
+  teams?:
+    | T
+    | {
+        title?: T;
+        members?:
+          | T
+          | {
+              name?: T;
+              role?: T;
+              details?: T;
+              id?: T;
+            };
+        id?: T;
+      };
   seo?:
     | T
     | {

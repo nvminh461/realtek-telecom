@@ -48,7 +48,7 @@ export function Reveal({
   )
 }
 
-/** Observes an element that styles its own children (e.g. the fan-out card row) via `[data-shown]`. */
+/** Observes an element that styles its own children via `[data-shown]`. */
 export function useRevealRef<T extends HTMLElement>() {
   const ref = useRef<T>(null)
   useEffect(() => {

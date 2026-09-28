@@ -40,7 +40,7 @@ export function QuickContact({ hotline, zaloPhone, email, mapLink }: Props) {
       <button
         type="button"
         onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-        aria-label="Top"
+        aria-label={t('top')}
         className={`${itemClass} border border-line bg-white text-brand ${
           showTop ? 'visible scale-100 opacity-100' : 'invisible scale-75 opacity-0'
         } transition-[opacity,transform,visibility]`}

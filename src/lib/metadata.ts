@@ -1,6 +1,6 @@
 import type { Metadata } from 'next'
 
-import { locales, type Locale } from '@/i18n/routing'
+import { htmlLang, locales, type Locale } from '@/i18n/routing'
 
 import { getSiteSettings } from './data'
 import { resolveImage } from './media'
@@ -20,11 +20,11 @@ type Args = {
   noIndex?: boolean
 }
 
-const ogLocale: Record<Locale, string> = { vi: 'vi_VN', en: 'en_US', zh: 'zh_CN' }
+const ogLocale: Record<Locale, string> = { vi: 'vi_VN', en: 'en_US', zh: 'zh_TW' }
 
 export function languageAlternates(path: string) {
   return {
-    ...Object.fromEntries(locales.map((l) => [l, absoluteUrl(path, l)])),
+    ...Object.fromEntries(locales.map((l) => [htmlLang[l], absoluteUrl(path, l)])),
     'x-default': absoluteUrl(path, 'vi'),
   }
 }

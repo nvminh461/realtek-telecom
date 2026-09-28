@@ -1,7 +1,7 @@
 {
   "meta": {
     "siteName": "Realtek Telecom",
-    "defaultDescription": "Realtek Informatics & Telecommunication JSC — network infrastructure, telecom and IT solutions for businesses."
+    "defaultDescription": "Realtek Informatics Telecom JSC — ICT system integration, networking, data centers, telephony and ELV systems for businesses."
   },
   "nav": {
     "home": "Home",
@@ -14,7 +14,9 @@
     "menu": "Menu",
     "close": "Close",
     "language": "Language",
-    "skip": "Skip to content"
+    "skip": "Skip to content",
+    "main": "Main menu",
+    "breadcrumb": "Breadcrumb"
   },
   "common": {
     "viewAll": "View all",
@@ -39,21 +41,25 @@
     "pause": "Pause",
     "play": "Play",
     "goToSlide": "Go to slide {index}",
-    "swipeHint": "Swipe to rotate"
+    "swipeHint": "Swipe to rotate",
+    "draft": "Viewing a draft",
+    "exitDraft": "Exit"
   },
   "home": {
     "eyebrow": "Realtek Telecom",
     "servicesTitle": "What we do",
+    "serviceNodes": "{count, plural, one {# category} other {# categories}}",
     "projectsTitle": "Featured projects",
     "documentsTitle": "Document library",
-    "documentsText": "Technical documents, company profiles and deployment guides compiled and regularly updated by Realtek.",
+    "documentsText": "Realtek’s company profile and company introduction.",
     "newsTitle": "News & events",
-    "partnersTitle": "Our partners",
-    "scroll": "Scroll down"
+    "partnersTitle": "Featured partners",
+    "scroll": "Scroll down",
+    "productsTitle": "Main products"
   },
   "documents": {
     "title": "Document library",
-    "intro": "Search technical documents, company profiles and forms. Each document has an overview before you download it.",
+    "intro": "Browse Realtek’s company profile and company introduction. Each document has an overview before you download it.",
     "searchPlaceholder": "Document name or keyword…",
     "search": "Search",
     "allCategories": "All categories",
@@ -73,7 +79,7 @@
     "info": "Document details",
     "related": "Related documents",
     "aboutTitle": "About Realtek Telecom",
-    "aboutText": "Realtek provides network infrastructure, telecom and IT solutions for businesses. For advice on this document, contact our engineering team.",
+    "aboutText": "Realtek provides ICT system integration, networking, data centers, telephony and ELV systems for businesses. For advice on this document, contact our engineering team.",
     "providers": {
       "onedrive": "OneDrive",
       "gdrive": "Google Drive"
@@ -109,7 +115,8 @@
     "zalo": "Chat on Zalo",
     "email": "Send email",
     "map": "Map",
-    "toggle": "Quick contact"
+    "toggle": "Quick contact",
+    "top": "Back to top"
   },
   "footer": {
     "links": "Links",
@@ -124,5 +131,17 @@
     "title": "Page not found",
     "text": "The page you are looking for may have moved or no longer exists.",
     "back": "Back to home"
+  },
+  "certificates": {
+    "title": "Certificates & accreditations",
+    "text": "Certifications and accreditations Realtek has earned.",
+    "more": "Show more",
+    "less": "Show less",
+    "close": "Close"
+  },
+  "about": {
+    "networkTitle": "Operating network",
+    "teamTitle": "Our people",
+    "productsTitle": "Next-generation products"
   }
 }

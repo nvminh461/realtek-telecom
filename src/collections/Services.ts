@@ -34,7 +34,27 @@ export const Services: CollectionConfig = {
           fields: [
             { name: 'title', label: 'Tên dịch vụ', type: 'text', localized: true, required: true },
             { name: 'excerpt', label: 'Tóm tắt', type: 'textarea', localized: true },
-            { name: 'content', label: 'Nội dung chi tiết', type: 'richText', localized: true },
+            { name: 'content', label: 'Giới thiệu', type: 'richText', localized: true },
+            {
+              name: 'groups',
+              label: 'Hạng mục dịch vụ',
+              type: 'array',
+              labels: { singular: 'Hạng mục', plural: 'Hạng mục' },
+              admin: {
+                description:
+                  'Hiện thành các nút trên thẻ dịch vụ ở trang chủ và thành danh sách ở trang chi tiết. Mỗi hạng mục có thể có các mục con.',
+              },
+              fields: [
+                { name: 'title', label: 'Tên hạng mục', type: 'text', localized: true, required: true },
+                {
+                  name: 'items',
+                  label: 'Mục con',
+                  type: 'array',
+                  labels: { singular: 'Mục con', plural: 'Mục con' },
+                  fields: [{ name: 'title', label: 'Tên', type: 'text', localized: true, required: true }],
+                },
+              ],
+            },
           ],
         },
         {

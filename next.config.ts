@@ -26,7 +26,7 @@ const nextConfig: NextConfig = {
   poweredByHeader: false,
   images: {
     formats: ['image/avif', 'image/webp'],
-    localPatterns: [{ pathname: '/api/media/file/**' }, { pathname: '/demo/**' }],
+    localPatterns: [{ pathname: '/api/media/file/**' }, { pathname: '/brand/**' }, { pathname: '/content/**' }],
     remotePatterns: [
       ...(r2Public
         ? [{ protocol: r2Public.protocol.replace(':', '') as 'https' | 'http', hostname: r2Public.hostname }]
