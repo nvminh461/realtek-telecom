@@ -4,14 +4,10 @@ export type StaticLogo = { src: string; width: number; height: number }
 
 /** Official "RealTek · Informatics Telecom" logo (trimmed, transparent PNG), used by every locale. */
 export const realtekLogo: StaticLogo = { src: '/brand/realtek-logo.png', width: 426, height: 80 }
-/** White version of the same logo, for dark backgrounds (transparent header over the hero, footer). */
-export const realtekLogoLight: StaticLogo = { src: '/brand/realtek-logo-white.png', width: 491, height: 99 }
-
-type LogoSettings = Pick<SiteSetting, 'logo' | 'logoLight'>
-
-/** Props for `<Logo>` on a light or dark background: the uploaded logo when set, otherwise the built-in file. */
-export function logoFor(settings: LogoSettings, tone: 'dark' | 'light') {
-  return tone === 'light'
-    ? { logo: settings.logoLight, image: realtekLogoLight }
-    : { logo: settings.logo, image: realtekLogo }
+/**
+ * Props for `<Logo>`: the uploaded logo when set, otherwise the built-in file. The logo is always the red one on a
+ * transparent background, never a white version and never on a plate, even over the dark hero and in the footer.
+ */
+export function logoFor(settings: Pick<SiteSetting, 'logo'>) {
+  return { logo: settings.logo, image: realtekLogo }
 }

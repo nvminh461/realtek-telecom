@@ -15,7 +15,6 @@ const localeLabels: Record<string, string> = { vi: 'VI', en: 'EN', zh: '中文' 
 type Props = {
   items: NavItem[]
   logo: ReactNode
-  logoLight: ReactNode
   hotline?: string | null
 }
 
@@ -50,7 +49,7 @@ function NavLink({
   )
 }
 
-export function SiteHeader({ items, logo, logoLight, hotline }: Props) {
+export function SiteHeader({ items, logo, hotline }: Props) {
   const t = useTranslations('nav')
   const pathname = usePathname()
   const locale = useLocale()
@@ -120,7 +119,7 @@ export function SiteHeader({ items, logo, logoLight, hotline }: Props) {
         )}
         <div className="container-x relative flex h-[var(--header-h)] items-center justify-between gap-6">
           <Link href="/" className="shrink-0" aria-label={t('home')}>
-            {transparent ? logoLight : logo}
+            {logo}
           </Link>
 
           <nav aria-label={t('main')} className="hidden lg:block">

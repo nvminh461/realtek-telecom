@@ -24,17 +24,10 @@ export const SiteSettings: GlobalConfig = {
               fields: [
                 {
                   name: 'logo',
-                  label: 'Logo (nền sáng)',
+                  label: 'Logo',
                   type: 'upload',
                   relationTo: 'media',
                   admin: { description: 'Để trống để dùng logo RealTek có sẵn. Dùng chung cho cả 3 ngôn ngữ.' },
-                },
-                {
-                  name: 'logoLight',
-                  label: 'Logo (nền tối)',
-                  type: 'upload',
-                  relationTo: 'media',
-                  admin: { description: 'Để trống để dùng logo RealTek trắng có sẵn.' },
                 },
                 {
                   name: 'favicon',

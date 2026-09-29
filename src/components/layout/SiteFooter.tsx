@@ -41,7 +41,7 @@ export async function SiteFooter({ locale, fallbackLinks }: { locale: Locale; fa
 
       <div className="container-x relative grid gap-12 py-16 md:grid-cols-12 md:py-20">
         <Reveal className="md:col-span-5" variant="up">
-          <Logo {...logoFor(settings, 'light')} name={settings.shortName ?? undefined} />
+          <Logo {...logoFor(settings)} name={settings.shortName ?? undefined} />
           {settings.tagline ? (
             <p className="mt-6 font-display text-sm font-semibold uppercase tracking-[0.14em] text-accent">
               {settings.tagline}

@@ -85,8 +85,10 @@ export function HeroSlider({ slides, autoplay = true, intervalSeconds = 6, varia
       ref={rootRef}
       aria-roledescription="carousel"
       aria-label={current.heading ?? 'Slider'}
-      className={`relative isolate overflow-hidden bg-brand-deep text-white ${
-        full ? 'h-[100svh] min-h-[560px]' : 'h-[62svh] min-h-[420px] md:h-[68vh]'
+      // A minimum height, not a fixed one: on short screens or with a long heading the hero grows instead of pushing
+      // its text up under the fixed header.
+      className={`relative isolate flex flex-col overflow-hidden bg-brand-deep text-white ${
+        full ? 'min-h-[max(560px,100svh)]' : 'min-h-[max(420px,62svh)] md:min-h-[max(420px,68vh)]'
       }`}
       onMouseEnter={() => setHoverPaused(true)}
       onMouseLeave={() => setHoverPaused(false)}
@@ -169,9 +171,10 @@ export function HeroSlider({ slides, autoplay = true, intervalSeconds = 6, varia
         className="pointer-events-none absolute inset-x-0 bottom-0 z-20 h-1/3 bg-gradient-to-t from-black/55 to-transparent"
       />
 
-      <div className="container-x relative z-30 flex h-full flex-col justify-end pb-28 md:pb-32">
+      {/* Top padding keeps the text clear of the fixed header */}
+      <div className="container-x relative z-30 flex flex-1 flex-col justify-end pb-28 pt-[calc(var(--header-h)+32px)]">
         {children ?? (
-          <div key={index} className="max-w-3xl">
+          <div key={index} className="max-w-5xl">
             {current.eyebrow ? (
               <div className="overflow-hidden">
                 <p className="rise eyebrow eyebrow--light" style={{ animationDelay: '250ms' }}>
@@ -180,11 +183,12 @@ export function HeroSlider({ slides, autoplay = true, intervalSeconds = 6, varia
               </div>
             ) : null}
             {current.heading ? (
-              <div className="-mb-[0.2em] mt-[calc(1.25rem-0.3em)] overflow-hidden pb-[0.2em] pt-[0.3em] font-display text-[clamp(34px,6vw,80px)]">
+              <div className="-mb-[0.2em] mt-[calc(1.25rem-0.3em)] overflow-hidden pb-[0.2em] pt-[0.3em] font-display text-[clamp(28px,min(6vw,9svh),80px)]">
                 {/* The em padding (offset by the margins) keeps stacked Vietnamese diacritics (Ế, Ộ)
-                    inside the clipping box that the rise animation needs. */}
+                    inside the clipping box that the rise animation needs. At most three lines, with a font that
+                    also scales with the screen height, so the slide controls always stay on screen. */}
                 <h1
-                  className="rise font-bold uppercase leading-[1.14] tracking-[-0.01em]"
+                  className="rise -mb-[0.15em] -mt-[0.3em] line-clamp-3 pb-[0.15em] pt-[0.3em] font-bold uppercase leading-[1.14] tracking-[-0.01em]"
                   style={{ animationDelay: '380ms' }}
                 >
                   {current.heading}

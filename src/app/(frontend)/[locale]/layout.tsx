@@ -130,12 +130,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
               </a>
             </div>
           ) : null}
-          <SiteHeader
-            items={nav}
-            hotline={settings.hotline}
-            logo={<Logo {...logoFor(settings, 'dark')} name={name} />}
-            logoLight={<Logo {...logoFor(settings, 'light')} name={name} />}
-          />
+          <SiteHeader items={nav} hotline={settings.hotline} logo={<Logo {...logoFor(settings)} name={name} />} />
           <main id="main">{children}</main>
           <SiteFooter locale={locale} fallbackLinks={[{ label: t('home'), href: '/' }, ...defaultNav]} />
           <QuickContact

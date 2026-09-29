@@ -516,6 +516,9 @@ export interface Slider {
         mobileImage?: (string | null) | Media;
         video?: (string | null) | Media;
         eyebrow?: string | null;
+        /**
+         * Hiển thị tối đa 3 dòng, phần dài hơn bị cắt bằng "…": nên dưới khoảng 45 ký tự.
+         */
         heading?: string | null;
         text?: string | null;
         button?: {
@@ -1283,10 +1286,6 @@ export interface SiteSetting {
    */
   logo?: (string | null) | Media;
   /**
-   * Để trống để dùng logo RealTek trắng có sẵn.
-   */
-  logoLight?: (string | null) | Media;
-  /**
    * Để trống để dùng biểu tượng chữ R của logo RealTek.
    */
   favicon?: (string | null) | Media;
@@ -1511,7 +1510,6 @@ export interface SiteSettingsSelect<T extends boolean = true> {
   tagline?: T;
   description?: T;
   logo?: T;
-  logoLight?: T;
   favicon?: T;
   taxCode?: T;
   address?: T;
