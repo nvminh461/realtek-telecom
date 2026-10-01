@@ -1571,9 +1571,9 @@ export const sliders: { placement: 'home' | 'about' | 'documents'; name: string;
           zh: '總部位於胡志明市，服務東協',
         },
         text: {
-          vi: 'Văn phòng tại TP. Hồ Chí Minh, Hà Nội, Hải Phòng, Thái Lan và Côn Sơn (Trung Quốc).',
-          en: 'Offices in Ho Chi Minh City, Hanoi, Hai Phong, Thailand and Kunshan (China).',
-          zh: '據點遍及胡志明市、河內、海防、泰國與昆山。',
+          vi: 'Văn phòng tại TP. Hồ Chí Minh, Hà Nội, Thái Lan và Côn Sơn (Trung Quốc).',
+          en: 'Offices in Ho Chi Minh City, Hanoi, Thailand and Kunshan (China).',
+          zh: '據點遍及胡志明市、河內、泰國與昆山。',
         },
         // Alternative if the document library must stay promoted: keep the old slide-3 purpose with
         // heading "Hồ sơ năng lực Realtek" / "Realtek company profile" / "Realtek 公司簡介", url '/documents'.
@@ -1767,12 +1767,12 @@ export function partnerInfo(entry: PartnerEntry) {
 
 /* ---------- Globals ---------- */
 
-// Registered head office (business registration + ISO certificate: "Lầu 15, Phòng 1508 … Phường Bến Nghé, Quận 1"),
-// written with the ward name in force since 07/2025 (Bến Nghé merged into Phường Sài Gòn, districts abolished).
+// Head office as given by the company (10/2026), with the ward name in force since 07/2025
+// (Bến Nghé merged into Phường Sài Gòn, districts abolished).
 const address: L = {
-  vi: 'Phòng 1508, Lầu 15, Tòa nhà Vincom Center, 72 Lê Thánh Tôn, Phường Sài Gòn, TP. Hồ Chí Minh',
-  en: 'Room 1508, 15th Floor, Vincom Center, 72 Le Thanh Ton Street, Sai Gon Ward, Ho Chi Minh City, Vietnam',
-  zh: '越南胡志明市西貢坊黎聖宗街 72 號 Vincom Center 15 樓 1508 室',
+  vi: 'Phòng 1505, Tầng 15, Tòa nhà Vincom Center, 72 Lê Thánh Tôn, Phường Sài Gòn, TP. Hồ Chí Minh, Việt Nam',
+  en: 'Room 1505, 15th Floor, Vincom Center, 72 Le Thanh Ton Street, Sai Gon Ward, Ho Chi Minh City, Vietnam',
+  zh: '越南胡志明市西貢坊黎聖宗街 72 號 Vincom Center 15 樓 1505 室',
 }
 
 export const siteSettings = {
@@ -1929,25 +1929,17 @@ const offices = [
   {
     name: { vi: 'Văn phòng Hồ Chí Minh', en: 'Ho Chi Minh City office', zh: '胡志明市辦公室' },
     address: {
-      vi: 'Tầng 2, Số 487–489 Điện Biên Phủ, Phường 3, Quận 3, TP. Hồ Chí Minh',
-      en: '2nd Floor, No. 487–489 Dien Bien Phu Street, Ward 3, District 3, Ho Chi Minh City',
-      zh: '胡志明市第三郡第三坊奠邊府街 487–489 號 2 樓',
+      vi: 'Phòng 505, Tòa nhà An Cư Đức Phú, Số 7/1 Thành Thái, Phường Diên Hồng, TP. Hồ Chí Minh',
+      en: 'Room 505, An Cu Duc Phu Building, No. 7/1 Thanh Thai Street, Dien Hong Ward, Ho Chi Minh City',
+      zh: '胡志明市 Dien Hong 坊 Thanh Thai 街 7/1 號 An Cu Duc Phu 大樓 505 室',
     },
   },
   {
     name: { vi: 'Văn phòng Hà Nội', en: 'Hanoi office', zh: '河內辦公室' },
     address: {
-      vi: 'Tầng 3, Số 35-37-39 Phố Nguyễn Xiển, Phường Hạ Đình, Quận Thanh Xuân, TP. Hà Nội',
-      en: '3rd Floor, No. 35-37-39 Nguyen Xien Street, Ha Dinh Ward, Thanh Xuan District, Hanoi',
-      zh: '河內市青春郡 Ha Dinh 坊 Nguyen Xien 街 35-37-39 號 3 樓',
-    },
-  },
-  {
-    name: { vi: 'Văn phòng Hải Phòng', en: 'Hai Phong office', zh: '海防辦公室' },
-    address: {
-      vi: 'Tầng 2, Số 26 Ngô Kim Tài, Phường Kênh Dương, Quận Lê Chân, TP. Hải Phòng',
-      en: '2nd Floor, No. 26 Ngo Kim Tai Street, Kenh Duong Ward, Le Chan District, Hai Phong',
-      zh: '海防市黎真郡 Kenh Duong 坊 Ngo Kim Tai 街 26 號 2 樓',
+      vi: 'Số 35-37-39 Nguyễn Xiển, Phường Khương Đình, TP. Hà Nội',
+      en: 'No. 35-37-39 Nguyen Xien Street, Khuong Dinh Ward, Hanoi',
+      zh: '河內市 Khuong Dinh 坊 Nguyen Xien 街 35-37-39 號',
     },
   },
   {

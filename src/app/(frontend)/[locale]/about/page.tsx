@@ -195,6 +195,8 @@ export default async function AboutPage({ params }: PageProps<'/[locale]/about'>
                   </Reveal>
                 </li>
               ))}
+              {/* Fills the last row's empty cells, which would otherwise show the grid's line colour. */}
+              <li aria-hidden className={officeGridFiller(page.offices.length)} />
             </ul>
           </div>
         </section>
@@ -259,4 +261,16 @@ export default async function AboutPage({ params }: PageProps<'/[locale]/about'>
       <CertificatesSection locale={locale} eyebrow={t('eyebrow')} />
     </>
   )
+}
+
+/** Classes of the cell that closes the office grid's last row: 1 column on mobile, 2 from sm, 3 from lg. */
+function officeGridFiller(count: number) {
+  const smEmpty = count % 2
+  const lgEmpty = (3 - (count % 3)) % 3
+  return [
+    'hidden bg-white',
+    smEmpty ? 'sm:block' : 'sm:hidden',
+    lgEmpty ? 'lg:block' : 'lg:hidden',
+    lgEmpty === 2 ? 'lg:col-span-2' : 'lg:col-span-1',
+  ].join(' ')
 }
