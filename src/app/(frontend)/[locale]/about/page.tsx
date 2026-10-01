@@ -171,9 +171,9 @@ export default async function AboutPage({ params }: PageProps<'/[locale]/about'>
         <section className="py-24 md:py-32">
           <div className="container-x">
             <SectionHeading eyebrow={t('eyebrow')} title={ta('networkTitle')} className="mb-12 md:mb-14" />
-            <ul className="grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-3">
-              {page.offices.map((office, i) => (
-                <li key={office.id ?? i} className="bg-white">
+            <ul className="grid gap-px border border-line bg-line sm:grid-cols-2 lg:grid-cols-6">
+              {page.offices.map((office, i, all) => (
+                <li key={office.id ?? i} className={officeCellClass(i, all.length)}>
                   <Reveal variant="up" delay={Math.min(i, 5) * 80} innerClassName="flex h-full gap-4 p-7 md:p-8">
                     <MapPin size={22} className="mt-0.5 shrink-0 text-accent" />
                     <div>
@@ -195,8 +195,6 @@ export default async function AboutPage({ params }: PageProps<'/[locale]/about'>
                   </Reveal>
                 </li>
               ))}
-              {/* Fills the last row's empty cells, which would otherwise show the grid's line colour. */}
-              <li aria-hidden className={officeGridFiller(page.offices.length)} />
             </ul>
           </div>
         </section>
@@ -263,14 +261,18 @@ export default async function AboutPage({ params }: PageProps<'/[locale]/about'>
   )
 }
 
-/** Classes of the cell that closes the office grid's last row: 1 column on mobile, 2 from sm, 3 from lg. */
-function officeGridFiller(count: number) {
-  const smEmpty = count % 2
-  const lgEmpty = (3 - (count % 3)) % 3
+/**
+ * Office grid cell: 2 columns from sm, 3 per row from lg (on a 6-column grid). The cells of an incomplete last row
+ * widen to fill it (2 cells → half each, 1 cell → full width), so no empty cell is left.
+ */
+function officeCellClass(index: number, count: number) {
+  const lgRest = count % 3
+  const inLgLastRow = index >= count - lgRest
   return [
-    'hidden bg-white',
-    smEmpty ? 'sm:block' : 'sm:hidden',
-    lgEmpty ? 'lg:block' : 'lg:hidden',
-    lgEmpty === 2 ? 'lg:col-span-2' : 'lg:col-span-1',
-  ].join(' ')
+    'bg-white',
+    count % 2 && index === count - 1 && 'sm:col-span-2',
+    !inLgLastRow ? 'lg:col-span-2' : lgRest === 2 ? 'lg:col-span-3' : 'lg:col-span-6',
+  ]
+    .filter(Boolean)
+    .join(' ')
 }
