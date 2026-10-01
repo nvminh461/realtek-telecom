@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useLocale, useTranslations } from 'next-intl'
+import { useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 
 import { ArrowRight } from '@/components/Icons'
@@ -17,13 +17,11 @@ export type AccordionItem = {
 }
 
 /**
- * Horizontal image strip: the hovered (or focused) panel widens and its name turns from vertical to horizontal.
+ * Horizontal image strip: the hovered (or focused) panel widens and its name goes from one word per line to a single headline.
  * On touch screens the first tap opens a panel and the second tap follows the link.
  */
 export function ProjectAccordion({ items }: { items: AccordionItem[] }) {
   const t = useTranslations('common')
-  // vertical-rl keeps CJK glyphs upright, so the 180° turn used for bottom-to-top Latin would flip them.
-  const cjk = useLocale() === 'zh'
   const [active, setActive] = useState(Math.min(1, items.length - 1))
   const [touch, setTouch] = useState(false)
 
@@ -84,12 +82,10 @@ export function ProjectAccordion({ items }: { items: AccordionItem[] }) {
                 <span aria-hidden className="absolute inset-y-0 left-0 hidden w-px bg-white/20 md:block" />
               ) : null}
 
-              {/* Collapsed: vertical name, reading bottom-to-top (top-to-bottom with upright glyphs for Chinese). */}
+              {/* Collapsed: name stacked one word per line (w-min = longest word), reading top-to-bottom. */}
               <span
                 aria-hidden
-                className={`absolute bottom-6 left-5 hidden whitespace-nowrap font-display text-sm font-bold uppercase tracking-[0.12em] transition-all duration-500 [writing-mode:vertical-rl] md:block ${
-                  cjk ? '' : 'md:rotate-180'
-                } ${
+                className={`absolute bottom-6 left-5 hidden w-min max-w-[calc(100%-2.5rem)] break-words font-display text-sm font-bold uppercase leading-snug tracking-[0.12em] transition-all duration-500 md:block ${
                   open ? 'translate-y-4 opacity-0' : 'translate-y-0 opacity-100 delay-300'
                 }`}
               >

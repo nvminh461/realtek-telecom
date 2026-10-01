@@ -110,6 +110,7 @@
     "error": "送出失敗，請重試或撥打服務專線。",
     "hotline": "服務專線",
     "address": "地址",
+    "taxCode": "稅務編號",
     "workingHours": "營業時間",
     "map": "路線導航"
   },

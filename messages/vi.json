@@ -110,6 +110,7 @@
     "error": "Không gửi được thông tin. Vui lòng thử lại hoặc gọi hotline.",
     "hotline": "Hotline",
     "address": "Địa chỉ",
+    "taxCode": "Mã số thuế",
     "workingHours": "Giờ làm việc",
     "map": "Chỉ đường"
   },

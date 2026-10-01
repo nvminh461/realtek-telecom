@@ -110,6 +110,7 @@
     "error": "Your message could not be sent. Please try again or call our hotline.",
     "hotline": "Hotline",
     "address": "Address",
+    "taxCode": "Tax code",
     "workingHours": "Working hours",
     "map": "Directions"
   },

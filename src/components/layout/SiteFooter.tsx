@@ -11,10 +11,12 @@ import { getFooter, getSiteSettings } from '@/lib/data'
 import type { NavItem } from './SiteHeader'
 
 export async function SiteFooter({ locale, fallbackLinks }: { locale: Locale; fallbackLinks: NavItem[] }) {
-  const [t, tc, settings, footer] = await Promise.all([
+  const [t, tc, settings, viSettings, footer] = await Promise.all([
     getTranslations({ locale, namespace: 'footer' }),
     getTranslations({ locale, namespace: 'contact' }),
     getSiteSettings(locale),
+    // The legal company name is always shown in Vietnamese, whatever the locale.
+    getSiteSettings('vi'),
     getFooter(locale),
   ])
 
@@ -91,7 +93,21 @@ export async function SiteFooter({ locale, fallbackLinks }: { locale: Locale; fa
           <h2 className="border-b border-white/15 pb-3 font-display text-xs font-semibold uppercase tracking-[0.2em] text-accent">
             {t('contact')}
           </h2>
-          <dl className="mt-4 space-y-4 text-[15px]">
+          {viSettings.companyName || settings.taxCode ? (
+            <div className="mt-4">
+              {viSettings.companyName ? (
+                <p lang="vi" className="font-display text-sm font-semibold uppercase leading-snug text-white">
+                  {viSettings.companyName}
+                </p>
+              ) : null}
+              {settings.taxCode ? (
+                <p className="mt-1 text-[14px] text-white/70">
+                  {tc('taxCode')}: {settings.taxCode}
+                </p>
+              ) : null}
+            </div>
+          ) : null}
+          <dl className="mt-5 space-y-4 text-[15px]">
             {settings.address ? (
               <div>
                 <dt className="text-[11px] font-semibold uppercase tracking-[0.18em] text-white/50">{tc('address')}</dt>
