@@ -55,7 +55,10 @@
     "newsTitle": "Tin tức & sự kiện",
     "partnersTitle": "Đối tác tiêu biểu",
     "scroll": "Cuộn xuống",
-    "productsTitle": "Sản phẩm chính"
+    "productsTitle": "Đại lý & phân phối",
+    "productsText": "Realtek cung cấp, làm đại lý và phân phối thiết bị, phần mềm của {count} thương hiệu công nghệ.",
+    "productsMore": "Xem tất cả {count} thương hiệu",
+    "productsLess": "Thu gọn"
   },
   "documents": {
     "title": "Thư viện tài liệu",

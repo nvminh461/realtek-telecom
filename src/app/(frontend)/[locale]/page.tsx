@@ -14,7 +14,8 @@ import { ServiceTree, type ServiceTreeCard } from '@/components/home/ServiceTree
 import { ArrowRight, Search } from '@/components/Icons'
 import { Img } from '@/components/Img'
 import { toHeroSlides } from '@/components/PageHero'
-import { PartnerMarquee } from '@/components/PartnerMarquee'
+import { LogoGrid } from '@/components/LogoGrid'
+import { partnerLogos, PartnerMarquee } from '@/components/PartnerMarquee'
 import { Reveal } from '@/components/reveal/Reveal'
 import { SectionHeading } from '@/components/SectionHeading'
 import { SmartLink } from '@/components/SmartLink'
@@ -74,11 +75,9 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
     image: resolveImage(p.featuredImage, 'wide', p.title),
   }))
 
+  const productLogos = partnerLogos(partners.filter((p) => p.group === 'product'))
   // Partners saved before the `group` field existed count as featured partners.
-  const partnerRows = [
-    { key: 'product', title: 'productsTitle' as const, items: partners.filter((p) => p.group === 'product') },
-    { key: 'partner', title: 'partnersTitle' as const, items: partners.filter((p) => p.group !== 'product') },
-  ].filter((row) => row.items.length)
+  const featuredPartners = partners.filter((p) => p.group !== 'product')
 
   const intro = home.intro
   const highlight = home.highlight
@@ -180,6 +179,21 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
               className="mb-12 md:mb-16"
             />
             <ServiceTree cards={serviceCards} detailLabel={tc('viewDetail')} />
+          </div>
+        </section>
+      ) : null}
+
+      {/* Brands Realtek is agent / distributor for, right after the services they go into */}
+      {productLogos.length ? (
+        <section className="bg-white py-24 md:py-32">
+          <div className="container-x">
+            <SectionHeading eyebrow={t('eyebrow')} title={t('productsTitle')} className="mb-12 md:mb-16">
+              {t('productsText', { count: productLogos.length })}
+            </SectionHeading>
+            <LogoGrid
+              logos={productLogos}
+              labels={{ more: t('productsMore', { count: productLogos.length }), less: t('productsLess') }}
+            />
           </div>
         </section>
       ) : null}
@@ -330,23 +344,17 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
 
       <CertificatesSection locale={locale} eyebrow={t('eyebrow')} className="bg-white" />
 
-      {/* Main product brands and featured partners: two logo rows running in opposite directions */}
-      {partnerRows.length ? (
+      {/* Featured partners: self-scrolling logo carousel */}
+      {featuredPartners.length ? (
         <section className="border-t border-line bg-paper py-20 md:py-24">
-          <div className="space-y-14">
-            {partnerRows.map((row, i) => (
-              <div key={row.key}>
-                <div className="container-x mb-8">
-                  <Reveal variant="mask-x">
-                    <h2 className="eyebrow">{t(row.title)}</h2>
-                  </Reveal>
-                </div>
-                <Reveal variant="up">
-                  <PartnerMarquee partners={row.items} reverse={i % 2 === 1} />
-                </Reveal>
-              </div>
-            ))}
+          <div className="container-x mb-8">
+            <Reveal variant="mask-x">
+              <h2 className="eyebrow">{t('partnersTitle')}</h2>
+            </Reveal>
           </div>
+          <Reveal variant="up">
+            <PartnerMarquee partners={featuredPartners} />
+          </Reveal>
         </section>
       ) : null}
 

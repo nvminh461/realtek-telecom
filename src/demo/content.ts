@@ -1591,7 +1591,8 @@ export const sliders: { placement: 'home' | 'about' | 'documents'; name: string;
 
 /* ---------- Partners ----------
    Logos are PNG files in public/content/partners, cropped from the company profile and the Chinese deck
-   (`partnerLogos` lists every file with its width/height). Partners are matched by name when updating the database. */
+   (`partnerLogos` lists every file with its width/height); zabbix.png is the official logo from Wikimedia Commons,
+   since the deck only has it white on red. Partners are matched by name when updating the database. */
 
 export const partnerLogos = {
   acer: [140, 65],
@@ -1671,6 +1672,7 @@ export const partnerLogos = {
   'vina-foods-kyoei': [126, 111],
   vmware: [600, 92],
   wistron: [600, 259],
+  zabbix: [600, 157],
   zkteco: [165, 47],
 } satisfies Record<string, [number, number]>
 export type PartnerLogoKey = keyof typeof partnerLogos
@@ -1679,30 +1681,64 @@ export type PartnerGroup = 'product' | 'partner'
 export type PartnerEntry = { name: string; logo: PartnerLogoKey; group: PartnerGroup; url?: string }
 
 /**
- * Home-page logo carousels, in the company profile's order: `product` = "Sản phẩm chính / Main products" (p.12),
- * `partner` = "Đối tác tiêu biểu / Featured partners" (p.23; two logos there are unidentified and left out).
+ * Home-page logos. `product` = brands Realtek is agent / distributor for, shown as the logo grid: first the Chinese
+ * deck's "代理 / 經銷產品" slide (read row by row, left to right), then the company profile's "Sản phẩm chính / Main
+ * products" (p.12) that the slide doesn't have. `partner` = "Đối tác tiêu biểu / Featured partners" (profile p.23; two
+ * logos there are unidentified and left out), shown as a carousel.
  */
 export const partners: PartnerEntry[] = [
+  { name: 'Microsoft', logo: 'microsoft', group: 'product' },
+  { name: 'Hewlett Packard Enterprise', logo: 'hpe', group: 'product' },
+  { name: 'Quest', logo: 'quest', group: 'product' },
+  { name: 'Aruba Networks', logo: 'aruba', group: 'product' },
+  { name: 'ManageEngine', logo: 'manageengine', group: 'product' },
+  { name: 'Symantec', logo: 'symantec', group: 'product' },
+  { name: 'VMware', logo: 'vmware', group: 'product' },
+  { name: 'H3C', logo: 'h3c', group: 'product' },
+  { name: 'Huawei', logo: 'huawei', group: 'product' },
+  { name: 'Sangfor', logo: 'sangfor', group: 'product' },
+  { name: 'IP-guard', logo: 'ip-guard', group: 'product' },
+  { name: 'Amazon Web Services', logo: 'aws', group: 'product' },
+  { name: 'IBM', logo: 'ibm', group: 'product' },
+  { name: 'F5', logo: 'f5', group: 'product' },
+  { name: 'Infortrend', logo: 'infortrend', group: 'product' },
+  { name: 'Check Point', logo: 'check-point', group: 'product' },
+  { name: 'Fortinet', logo: 'fortinet', group: 'product' },
+  { name: 'DINTEK', logo: 'dintek', group: 'product' },
+  { name: 'Microsoft Azure', logo: 'microsoft-azure', group: 'product' },
+  { name: 'Zabbix', logo: 'zabbix', group: 'product' },
+  { name: 'Veeam', logo: 'veeam', group: 'product' },
+  { name: 'QNAP', logo: 'qnap', group: 'product' },
+  { name: 'Citrix', logo: 'citrix', group: 'product' },
+  { name: 'Avaya', logo: 'avaya', group: 'product' },
+  { name: 'Elastic', logo: 'elastic', group: 'product' },
+  { name: 'SolarWinds', logo: 'solarwinds', group: 'product' },
+  { name: 'Alibaba Cloud', logo: 'aliyun', group: 'product' },
+  { name: 'Openfind', logo: 'openfind', group: 'product' },
+  { name: 'ASUS', logo: 'asus', group: 'product' },
+  { name: 'One Identity', logo: 'one-identity', group: 'product' },
+  { name: 'Dell EMC', logo: 'dell-emc', group: 'product' },
+  { name: 'Alcatel-Lucent', logo: 'alcatel-lucent', group: 'product' },
+  { name: 'Softnext', logo: 'softnext', group: 'product' },
   { name: 'Hikvision', logo: 'hikvision', group: 'product' },
+  { name: 'Progress WhatsUp Gold', logo: 'progress-whatsup-gold', group: 'product' },
+  { name: 'Delta', logo: 'delta', group: 'product' },
+  { name: 'Palo Alto Networks', logo: 'palo-alto-networks', group: 'product' },
+  { name: 'Cisco', logo: 'cisco', group: 'product' },
+  { name: 'APC by Schneider Electric', logo: 'apc', group: 'product' },
+  { name: 'AVer', logo: 'aver', group: 'product' },
+  { name: 'Deltapath', logo: 'deltapath', group: 'product' },
+  { name: 'CommScope', logo: 'commscope', group: 'product' },
+  { name: 'Vertiv', logo: 'vertiv', group: 'product' },
   { name: 'LILIN', logo: 'lilin', group: 'product' },
   { name: 'Ruijie Networks', logo: 'ruijie', group: 'product' },
-  { name: 'Avaya', logo: 'avaya', group: 'product' },
-  { name: 'QNAP', logo: 'qnap', group: 'product' },
-  { name: 'ASUS', logo: 'asus', group: 'product' },
-  { name: 'Fortinet', logo: 'fortinet', group: 'product' },
   { name: 'Logitech', logo: 'logitech', group: 'product' },
-  { name: 'Alcatel-Lucent', logo: 'alcatel-lucent', group: 'product' },
   { name: 'Dell', logo: 'dell', group: 'product' },
   { name: 'Cambium Networks', logo: 'cambium-networks', group: 'product' },
-  { name: 'Cisco', logo: 'cisco', group: 'product' },
-  { name: 'Hewlett Packard Enterprise', logo: 'hpe', group: 'product' },
   { name: 'ZKTeco', logo: 'zkteco', group: 'product' },
   { name: 'TOA', logo: 'toa', group: 'product' },
-  { name: 'CommScope', logo: 'commscope', group: 'product' },
   { name: 'Fast Link Cabsys', logo: 'fast-link-cabsys', group: 'product' },
-  { name: 'Delta', logo: 'delta', group: 'product' },
   { name: 'Ruckus Wireless', logo: 'ruckus', group: 'product' },
-  { name: 'APC by Schneider Electric', logo: 'apc', group: 'product' },
   { name: 'Foxconn', logo: 'foxconn', group: 'partner' },
   { name: 'Pou Chen Group', logo: 'pou-chen', group: 'partner' },
   { name: 'Compal', logo: 'compal', group: 'partner' },

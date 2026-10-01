@@ -55,7 +55,10 @@
     "newsTitle": "News & events",
     "partnersTitle": "Featured partners",
     "scroll": "Scroll down",
-    "productsTitle": "Main products"
+    "productsTitle": "Brands we distribute",
+    "productsText": "Realtek supplies, represents and distributes hardware and software from {count} technology brands.",
+    "productsMore": "View all {count} brands",
+    "productsLess": "Show less"
   },
   "documents": {
     "title": "Document library",

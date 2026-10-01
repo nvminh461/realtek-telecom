@@ -29,7 +29,7 @@ export const Partners: CollectionConfig = {
       defaultValue: 'partner',
       options: [
         { label: 'Đối tác tiêu biểu', value: 'partner' },
-        { label: 'Sản phẩm chính (thương hiệu)', value: 'product' },
+        { label: 'Sản phẩm đại lý & phân phối (thương hiệu)', value: 'product' },
       ],
       admin: { position: 'sidebar' },
     },

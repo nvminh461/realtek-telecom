@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import { useTranslations } from 'next-intl'
+import { useLocale, useTranslations } from 'next-intl'
 import { useEffect, useState } from 'react'
 
 import { ArrowRight } from '@/components/Icons'
@@ -22,6 +22,8 @@ export type AccordionItem = {
  */
 export function ProjectAccordion({ items }: { items: AccordionItem[] }) {
   const t = useTranslations('common')
+  // vertical-rl keeps CJK glyphs upright, so the 180° turn used for bottom-to-top Latin would flip them.
+  const cjk = useLocale() === 'zh'
   const [active, setActive] = useState(Math.min(1, items.length - 1))
   const [touch, setTouch] = useState(false)
 
@@ -82,10 +84,12 @@ export function ProjectAccordion({ items }: { items: AccordionItem[] }) {
                 <span aria-hidden className="absolute inset-y-0 left-0 hidden w-px bg-white/20 md:block" />
               ) : null}
 
-              {/* Collapsed: vertical name, reading bottom-to-top. */}
+              {/* Collapsed: vertical name, reading bottom-to-top (top-to-bottom with upright glyphs for Chinese). */}
               <span
                 aria-hidden
-                className={`absolute bottom-6 left-5 hidden whitespace-nowrap font-display text-lg font-bold uppercase tracking-[0.12em] transition-all duration-500 [writing-mode:vertical-rl] md:block md:rotate-180 ${
+                className={`absolute bottom-6 left-5 hidden whitespace-nowrap font-display text-lg font-bold uppercase tracking-[0.12em] transition-all duration-500 [writing-mode:vertical-rl] md:block ${
+                  cjk ? '' : 'md:rotate-180'
+                } ${
                   open ? 'translate-y-4 opacity-0' : 'translate-y-0 opacity-100 delay-300'
                 }`}
               >

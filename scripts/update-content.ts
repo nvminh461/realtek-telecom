@@ -3,6 +3,7 @@
  *
  *   npm run update-content            # upsert content; lists everything in the database missing from content.ts
  *   npm run update-content:prune      # …and deletes them (same as `-- --prune`, which PowerShell drops)
+ *   npm run update-content:partners   # only the partners, nothing else is touched (same as `-- --partners`)
  *
  * - services, projects: upserted by slug (all locales, published); post/document categories: upserted by slug.
  * - partners: upserted by name (logo, website, order).
@@ -31,6 +32,7 @@ if (!process.env.DATABASE_URI) {
 }
 
 const prune = process.argv.includes('--prune')
+const partnersOnly = process.argv.includes('--partners')
 // A fresh object per call: the cloud-storage plugin keeps the incoming file in req.context (see scripts/seed.ts).
 const ctx = () => ({ disableRevalidate: true })
 const translations = ['en', 'zh'] as const
@@ -206,6 +208,29 @@ async function pruneMissing(
   return stale.length
 }
 
+/** Partners upserted by name (logo, group, website, order), then the ones missing from content.ts listed or pruned. */
+async function syncPartners() {
+  const partnerNames: string[] = []
+  for (const [i, entry] of content.partners.entries()) {
+    const { name, group, url } = content.partnerInfo(entry)
+    partnerNames.push(name)
+    const logo = await ensureMedia(partnerLogoFile(entry), { vi: name, en: name, zh: name })
+    const data = { name, group, url: url ?? null, logo, order: i, enabled: true }
+    const existing = await findBy('partners', 'name', name)
+    if (existing) await payload.update({ collection: 'partners', id: existing.id, data, context: ctx() })
+    else await payload.create({ collection: 'partners', data, context: ctx() })
+  }
+  console.log(`Đối tác: ${partnerNames.length} (logo mới tải lên: ${stats.uploaded}, đã có sẵn: ${stats.reused})`)
+  await pruneMissing('partners', 'name', partnerNames)
+}
+
+if (partnersOnly) {
+  await syncPartners()
+  await revalidateSite()
+  console.log('Cập nhật đối tác hoàn tất.')
+  process.exit(0)
+}
+
 /* ---------- media ---------- */
 
 console.log('Ảnh…')
@@ -305,18 +330,7 @@ await pruneMissing(
 
 /* ---------- partners ---------- */
 
-const partnerNames: string[] = []
-for (const [i, entry] of content.partners.entries()) {
-  const { name, group, url } = content.partnerInfo(entry)
-  partnerNames.push(name)
-  const logo = await ensureMedia(partnerLogoFile(entry), { vi: name, en: name, zh: name })
-  const data = { name, group, url: url ?? null, logo, order: i, enabled: true }
-  const existing = await findBy('partners', 'name', name)
-  if (existing) await payload.update({ collection: 'partners', id: existing.id, data, context: ctx() })
-  else await payload.create({ collection: 'partners', data, context: ctx() })
-}
-console.log(`Đối tác: ${partnerNames.length}`)
-await pruneMissing('partners', 'name', partnerNames)
+await syncPartners()
 
 /* ---------- certificates ---------- */
 
