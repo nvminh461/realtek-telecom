@@ -87,7 +87,7 @@ export function ProjectAccordion({ items }: { items: AccordionItem[] }) {
               {/* Collapsed: vertical name, reading bottom-to-top (top-to-bottom with upright glyphs for Chinese). */}
               <span
                 aria-hidden
-                className={`absolute bottom-6 left-5 hidden whitespace-nowrap font-display text-lg font-bold uppercase tracking-[0.12em] transition-all duration-500 [writing-mode:vertical-rl] md:block ${
+                className={`absolute bottom-6 left-5 hidden whitespace-nowrap font-display text-sm font-bold uppercase tracking-[0.12em] transition-all duration-500 [writing-mode:vertical-rl] md:block ${
                   cjk ? '' : 'md:rotate-180'
                 } ${
                   open ? 'translate-y-4 opacity-0' : 'translate-y-0 opacity-100 delay-300'
