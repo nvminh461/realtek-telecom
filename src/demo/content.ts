@@ -474,7 +474,7 @@ export const projects = [
         ['Data room', 'UPS system', 'Environmental monitoring system', 'Structured cabling'],
       ),
       zh: projectDoc(
-        '仁寶是 Realtek 創始團隊自 2001 年起服務的客戶。Realtek 於仁寶北越廠（永福省 Bá Thiện 工業區）完成機房基礎建設。',
+        '仁寶是 Realtek 創始團隊自 2018 年起服務的客戶。Realtek 於仁寶北越廠（永福省 Bá Thiện 工業區）完成機房基礎建設。',
         '工作範圍',
         ['資料機房', 'UPS', '環控系統', '綜合佈線工程'],
       ),
@@ -1827,7 +1827,7 @@ export const homePage = {
     text: {
       vi: 'Realtek tư vấn, thiết kế, cung cấp, lắp đặt và bảo trì hệ thống công nghệ thông tin và điện nhẹ — mạng, trung tâm dữ liệu, tổng đài, camera an ninh — cho nhà máy, ngân hàng, chuỗi bán lẻ và văn phòng. Đội ngũ sáng lập đã đồng hành cùng các tập đoàn điện tử như Compal, Wistron và LiteOn từ năm 2001.',
       en: 'Realtek consults on, designs, supplies, installs and maintains IT and ELV systems — networks, data centers, telephony and security — for factories, banks, retailers and offices. Our founding team has worked with electronics groups such as Compal, Wistron and LITEON since 2001.',
-      zh: 'Realtek 為工廠、銀行、零售與辦公室提供資訊與弱電系統——網路、資料中心、電話與安防——的顧問、設計、供應、安裝與維護。創始團隊自 2001 年起即服務仁寶、緯創、光寶等電子集團。',
+      zh: 'Realtek 為工廠、銀行、零售與辦公室提供資訊與弱電系統——網路、資料中心、電話與安防——的顧問、設計、供應、安裝與維護。創始團隊自 2018 年起即服務仁寶、緯創、光寶等電子集團。',
     },
     image: photo('meeting'),
     link: { label: { vi: 'Tìm hiểu thêm', en: 'Learn more', zh: '了解更多' }, url: '/about' },
