@@ -48,8 +48,8 @@ Xem [.env.example](.env.example). Tối thiểu cần `DATABASE_URI`, `PAYLOAD_S
 |---|---|
 | `R2_*` | Để trống `R2_BUCKET` thì ảnh lưu trên ổ đĩa (`/media`), chỉ nên dùng khi phát triển. `R2_PUBLIC_URL` là domain công khai của bucket. |
 | `SMTP_*` | Gửi email báo liên hệ mới. Không cấu hình thì email chỉ ghi ra log. Địa chỉ nhận đặt trong Cấu hình chung → Thông báo & CRM. |
-| `NEXT_PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY` | Cloudflare Turnstile cho form liên hệ (tuỳ chọn). |
-| `ALTERNATE_HOSTS` | Các tên miền phụ chuyển hướng 301 về tên miền chính. |
+| `NEXT_PUBLIC_TURNSTILE_SITE_KEY`, `TURNSTILE_SECRET_KEY` | Cloudflare Turnstile cho form liên hệ (tuỳ chọn). Mỗi tên miền trỏ vào site phải được thêm vào danh sách Hostname của widget. |
+| `NEXT_PUBLIC_SITE_URL`, `ALTERNATE_HOSTS` | Site chạy trên mọi tên miền trỏ vào, không chuyển hướng; canonical, hreflang, Open Graph, `sitemap.xml` và `robots.txt` lấy theo tên miền đang truy cập. Hai biến này chỉ quyết định các tên miền được đăng nhập `/admin` (và là URL mặc định khi không có request). |
 
 ## Build và chạy production
 
@@ -58,7 +58,7 @@ npm run build    # không cần kết nối database khi build
 npm run start
 ```
 
-Nội dung sửa trong trang quản trị hiển thị ngay, không cần build lại. Các trang được dựng ở lần truy cập đầu tiên rồi lưu cache.
+Nội dung sửa trong trang quản trị hiển thị ngay, không cần build lại. Các trang được dựng theo từng request (để URL theo đúng tên miền đang truy cập), còn dữ liệu đọc từ database thì được cache.
 
 ## Deploy lên Vercel
 

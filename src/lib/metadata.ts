@@ -4,7 +4,8 @@ import { htmlLang, locales, type Locale } from '@/i18n/routing'
 
 import { getSiteSettings } from './data'
 import { resolveImage } from './media'
-import { absoluteUrl, siteUrl } from './site'
+import { getSiteUrl } from './origin'
+import { absoluteUrl } from './site'
 
 type SeoGroup = { metaTitle?: string | null; metaDescription?: string | null; ogImage?: unknown } | null | undefined
 
@@ -22,10 +23,10 @@ type Args = {
 
 const ogLocale: Record<Locale, string> = { vi: 'vi_VN', en: 'en_US', zh: 'zh_TW' }
 
-export function languageAlternates(path: string) {
+export function languageAlternates(path: string, origin: string) {
   return {
-    ...Object.fromEntries(locales.map((l) => [htmlLang[l], absoluteUrl(path, l)])),
-    'x-default': absoluteUrl(path, 'vi'),
+    ...Object.fromEntries(locales.map((l) => [htmlLang[l], absoluteUrl(path, l, origin)])),
+    'x-default': absoluteUrl(path, 'vi', origin),
   }
 }
 
@@ -40,19 +41,19 @@ export async function buildMetadata({
   publishedTime,
   noIndex,
 }: Args): Promise<Metadata> {
-  const settings = await getSiteSettings(locale)
+  const [settings, origin] = await Promise.all([getSiteSettings(locale), getSiteUrl()])
   const siteName = settings.shortName || 'Realtek Telecom'
   const pageTitle = seo?.metaTitle || title || settings.defaultMetaTitle || siteName
   const pageDescription = seo?.metaDescription || description || settings.defaultMetaDescription || undefined
   const ogImage =
     resolveImage(seo?.ogImage, 'wide') ?? resolveImage(image, 'wide') ?? resolveImage(settings.defaultOgImage, 'wide')
-  const imageUrl = ogImage ? new URL(ogImage.url, siteUrl).toString() : undefined
-  const url = absoluteUrl(path, locale)
+  const imageUrl = ogImage ? new URL(ogImage.url, origin).toString() : undefined
+  const url = absoluteUrl(path, locale, origin)
 
   return {
     title: path === '/' && !seo?.metaTitle ? { absolute: pageTitle } : pageTitle,
     description: pageDescription,
-    alternates: { canonical: url, languages: languageAlternates(path) },
+    alternates: { canonical: url, languages: languageAlternates(path, origin) },
     openGraph: {
       type,
       url,

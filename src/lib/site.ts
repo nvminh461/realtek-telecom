@@ -2,7 +2,10 @@ import { defaultLocale, type Locale } from '@/i18n/routing'
 
 const vercelProduction = process.env.VERCEL_PROJECT_PRODUCTION_URL
 
-/** Primary origin. Falls back to the Vercel production domain, then localhost for development. */
+/**
+ * Configured main origin, for code outside a request (Payload config, scripts); pages use getSiteUrl() in lib/origin.
+ * Falls back to the Vercel production domain, then localhost for development.
+ */
 export const siteUrl = (
   process.env.NEXT_PUBLIC_SITE_URL || (vercelProduction ? `https://${vercelProduction}` : 'http://localhost:3000')
 ).replace(/\/$/, '')
@@ -23,8 +26,8 @@ export function localizedPath(path: string, locale: Locale | string): string {
   return `/${locale}${clean}`
 }
 
-export function absoluteUrl(path: string, locale: Locale | string): string {
-  return `${siteUrl}${localizedPath(path, locale)}`
+export function absoluteUrl(path: string, locale: Locale | string, origin: string): string {
+  return `${origin}${localizedPath(path, locale)}`
 }
 
 export function isExternalUrl(url: string): boolean {

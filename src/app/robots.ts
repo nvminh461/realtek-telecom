@@ -1,15 +1,19 @@
 import type { MetadataRoute } from 'next'
 
-import { siteUrl } from '@/lib/site'
+import { getSiteUrl } from '@/lib/origin'
 
-export default function robots(): MetadataRoute.Robots {
+// Points at the sitemap of the domain being visited.
+export const dynamic = 'force-dynamic'
+
+export default async function robots(): Promise<MetadataRoute.Robots> {
+  const origin = await getSiteUrl()
   return {
     rules: {
       userAgent: '*',
       allow: '/',
       disallow: ['/admin', '/api/', '/next/', '/*/download$', '/*?q=*'],
     },
-    sitemap: `${siteUrl}/sitemap.xml`,
-    host: siteUrl,
+    sitemap: `${origin}/sitemap.xml`,
+    host: origin,
   }
 }

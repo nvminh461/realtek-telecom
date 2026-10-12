@@ -14,6 +14,7 @@ import { isLocale } from '@/i18n/routing'
 import { getBySlug, listProjects } from '@/lib/data'
 import { loadDetail } from '@/lib/detail'
 import { buildMetadata } from '@/lib/metadata'
+import { getSiteUrl } from '@/lib/origin'
 import { absoluteUrl } from '@/lib/site'
 
 export async function generateMetadata({ params }: PageProps<'/[locale]/projects/[slug]'>): Promise<Metadata> {
@@ -42,7 +43,8 @@ export default async function ProjectPage({ params }: PageProps<'/[locale]/proje
     getTranslations({ locale, namespace: 'common' }),
   ])
   const related = more.docs.filter((p) => p.id !== project.id).slice(0, 3)
-  const url = absoluteUrl(`/projects/${slug}`, locale)
+  const origin = await getSiteUrl()
+  const url = absoluteUrl(`/projects/${slug}`, locale, origin)
   const facts = [
     { label: tc('client'), value: project.client },
     { label: tc('location'), value: project.location },
@@ -139,8 +141,8 @@ export default async function ProjectPage({ params }: PageProps<'/[locale]/proje
 
       <JsonLd
         data={breadcrumbJsonLd([
-          { name: tn('home'), url: absoluteUrl('/', locale) },
-          { name: tn('projects'), url: absoluteUrl('/projects', locale) },
+          { name: tn('home'), url: absoluteUrl('/', locale, origin) },
+          { name: tn('projects'), url: absoluteUrl('/projects', locale, origin) },
           { name: project.title, url },
         ])}
       />

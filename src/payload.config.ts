@@ -37,7 +37,7 @@ const alternateOrigins = (process.env.ALTERNATE_HOSTS ?? '')
   .map((h) => `https://${h}`)
 
 export default buildConfig({
-  serverURL: siteUrl,
+  // No serverURL: admin API calls and local file URLs stay relative, so /admin works on every domain listed below.
   secret: process.env.PAYLOAD_SECRET || '',
   csrf: [siteUrl, ...alternateOrigins, ...extraOrigins],
   admin: {

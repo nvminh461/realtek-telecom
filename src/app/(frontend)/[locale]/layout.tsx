@@ -14,7 +14,7 @@ import { htmlLang, isLocale } from '@/i18n/routing'
 import { logoFor, realtekLogo } from '@/lib/brand'
 import { getHeader, getSiteSettings } from '@/lib/data'
 import { resolveImage } from '@/lib/media'
-import { siteUrl } from '@/lib/site'
+import { getSiteUrl } from '@/lib/origin'
 
 import '../globals.css'
 
@@ -33,12 +33,10 @@ const headingFont = Montserrat({
 })
 
 /**
- * Nothing is prerendered at build time, so building (e.g. on Vercel) never needs the database.
- * Each locale page is rendered on its first request and then cached like a static page (ISR).
+ * Rendered per request: canonical URLs, hreflang and Open Graph follow the domain being visited (see getSiteUrl).
+ * Data still comes from the cached reads in lib/data, and building never needs the database.
  */
-export function generateStaticParams() {
-  return []
-}
+export const dynamic = 'force-dynamic'
 
 export const viewport: Viewport = {
   themeColor: '#0c3a78',
@@ -49,11 +47,15 @@ export const viewport: Viewport = {
 export async function generateMetadata({ params }: LayoutProps<'/[locale]'>): Promise<Metadata> {
   const { locale } = await params
   if (!isLocale(locale)) return {}
-  const [settings, t] = await Promise.all([getSiteSettings(locale), getTranslations({ locale, namespace: 'meta' })])
+  const [settings, t, origin] = await Promise.all([
+    getSiteSettings(locale),
+    getTranslations({ locale, namespace: 'meta' }),
+    getSiteUrl(),
+  ])
   const siteName = settings.shortName || t('siteName')
   const favicon = resolveImage(settings.favicon)
   return {
-    metadataBase: new URL(siteUrl),
+    metadataBase: new URL(origin),
     title: { default: settings.defaultMetaTitle || siteName, template: `%s | ${siteName}` },
     description: settings.defaultMetaDescription || t('defaultDescription'),
     applicationName: siteName,
@@ -68,12 +70,13 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
   if (!isLocale(locale)) notFound()
   setRequestLocale(locale)
 
-  const [settings, header, t, tCommon, draft] = await Promise.all([
+  const [settings, header, t, tCommon, draft, origin] = await Promise.all([
     getSiteSettings(locale),
     getHeader(locale),
     getTranslations({ locale, namespace: 'nav' }),
     getTranslations({ locale, namespace: 'common' }),
     draftMode(),
+    getSiteUrl(),
   ])
 
   const defaultNav: NavItem[] = [
@@ -98,8 +101,8 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
     '@context': 'https://schema.org',
     '@type': 'Organization',
     name: settings.companyName || name,
-    url: siteUrl,
-    logo: new URL(logoImage.url, siteUrl).toString(),
+    url: origin,
+    logo: new URL(logoImage.url, origin).toString(),
     email: settings.email || undefined,
     telephone: settings.hotline || undefined,
     address: settings.address || undefined,

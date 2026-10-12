@@ -16,6 +16,7 @@ import { isLocale } from '@/i18n/routing'
 import { getBySlug, listServices } from '@/lib/data'
 import { loadDetail } from '@/lib/detail'
 import { buildMetadata } from '@/lib/metadata'
+import { getSiteUrl } from '@/lib/origin'
 import { absoluteUrl } from '@/lib/site'
 
 export async function generateMetadata({ params }: PageProps<'/[locale]/services/[slug]'>): Promise<Metadata> {
@@ -45,7 +46,8 @@ export default async function ServicePage({ params }: PageProps<'/[locale]/servi
   ])
   const others = all.filter((s) => s.id !== service.id)
   const groups = service.groups ?? []
-  const url = absoluteUrl(`/services/${slug}`, locale)
+  const origin = await getSiteUrl()
+  const url = absoluteUrl(`/services/${slug}`, locale, origin)
 
   return (
     <>
@@ -198,8 +200,8 @@ export default async function ServicePage({ params }: PageProps<'/[locale]/servi
 
       <JsonLd
         data={breadcrumbJsonLd([
-          { name: tn('home'), url: absoluteUrl('/', locale) },
-          { name: tn('services'), url: absoluteUrl('/services', locale) },
+          { name: tn('home'), url: absoluteUrl('/', locale, origin) },
+          { name: tn('services'), url: absoluteUrl('/services', locale, origin) },
           { name: service.title, url },
         ])}
       />

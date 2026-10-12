@@ -16,7 +16,8 @@ import { getBySlug, getSiteSettings, listPosts } from '@/lib/data'
 import { loadDetail } from '@/lib/detail'
 import { resolveImage } from '@/lib/media'
 import { buildMetadata } from '@/lib/metadata'
-import { absoluteUrl, siteUrl } from '@/lib/site'
+import { getSiteUrl } from '@/lib/origin'
+import { absoluteUrl } from '@/lib/site'
 import type { PostCategory } from '@/payload-types'
 
 export async function generateMetadata({ params }: PageProps<'/[locale]/news/[slug]'>): Promise<Metadata> {
@@ -49,7 +50,8 @@ export default async function PostPage({ params }: PageProps<'/[locale]/news/[sl
     getTranslations({ locale, namespace: 'common' }),
     getFormatter({ locale }),
   ])
-  const url = absoluteUrl(`/news/${slug}`, locale)
+  const origin = await getSiteUrl()
+  const url = absoluteUrl(`/news/${slug}`, locale, origin)
   const image = resolveImage(post.featuredImage, 'wide')
 
   return (
@@ -142,7 +144,7 @@ export default async function PostPage({ params }: PageProps<'/[locale]/news/[sl
           '@type': 'NewsArticle',
           headline: post.title,
           description: post.excerpt || undefined,
-          image: image ? [new URL(image.url, siteUrl).toString()] : undefined,
+          image: image ? [new URL(image.url, origin).toString()] : undefined,
           datePublished: post.publishedAt || post.createdAt,
           dateModified: post.updatedAt,
           mainEntityOfPage: url,
@@ -151,8 +153,8 @@ export default async function PostPage({ params }: PageProps<'/[locale]/news/[sl
       />
       <JsonLd
         data={breadcrumbJsonLd([
-          { name: tn('home'), url: absoluteUrl('/', locale) },
-          { name: tn('news'), url: absoluteUrl('/news', locale) },
+          { name: tn('home'), url: absoluteUrl('/', locale, origin) },
+          { name: tn('news'), url: absoluteUrl('/news', locale, origin) },
           { name: post.title, url },
         ])}
       />

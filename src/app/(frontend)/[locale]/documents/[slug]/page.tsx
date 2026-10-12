@@ -16,6 +16,7 @@ import { isLocale } from '@/i18n/routing'
 import { getBySlug, searchDocuments } from '@/lib/data'
 import { loadDetail } from '@/lib/detail'
 import { buildMetadata } from '@/lib/metadata'
+import { getSiteUrl } from '@/lib/origin'
 import { absoluteUrl, localizedPath } from '@/lib/site'
 import type { DocumentCategory } from '@/payload-types'
 
@@ -50,7 +51,8 @@ export default async function DocumentPage({ params }: PageProps<'/[locale]/docu
     getTranslations({ locale, namespace: 'nav' }),
     getFormatter({ locale }),
   ])
-  const url = absoluteUrl(`/documents/${slug}`, locale)
+  const origin = await getSiteUrl()
+  const url = absoluteUrl(`/documents/${slug}`, locale, origin)
   const provider = t(`providers.${doc.provider}`)
   const downloadHref = localizedPath(`/documents/${slug}/download`, locale)
 
@@ -185,8 +187,8 @@ export default async function DocumentPage({ params }: PageProps<'/[locale]/docu
       />
       <JsonLd
         data={breadcrumbJsonLd([
-          { name: tn('home'), url: absoluteUrl('/', locale) },
-          { name: tn('documents'), url: absoluteUrl('/documents', locale) },
+          { name: tn('home'), url: absoluteUrl('/', locale, origin) },
+          { name: tn('documents'), url: absoluteUrl('/documents', locale, origin) },
           { name: doc.title, url },
         ])}
       />
