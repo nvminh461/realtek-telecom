@@ -12,7 +12,7 @@ type Props = {
 }
 
 /** Uploaded logo when configured, otherwise the built-in RealTek logo. */
-export function Logo({ logo, image, className = '', name = 'Realtek Telecom' }: Props) {
+export function Logo({ logo, image, className = '', name = 'Realtek JSC' }: Props) {
   const uploaded = resolveImage(logo)
   const src = uploaded ? { src: uploaded.url, width: uploaded.width, height: uploaded.height } : image
   return (

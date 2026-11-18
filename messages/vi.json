@@ -1,6 +1,6 @@
 {
   "meta": {
-    "siteName": "Realtek Telecom",
+    "siteName": "Realtek JSC",
     "defaultDescription": "Công ty Cổ phần Tin học Viễn thông Realtek — tích hợp hệ thống ICT, hạ tầng mạng, trung tâm dữ liệu, tổng đài và điện nhẹ cho doanh nghiệp."
   },
   "nav": {
@@ -46,17 +46,17 @@
     "exitDraft": "Thoát"
   },
   "home": {
-    "eyebrow": "Realtek Telecom",
+    "eyebrow": "Realtek JSC",
     "servicesTitle": "Lĩnh vực hoạt động",
     "serviceNodes": "{count} hạng mục",
     "projectsTitle": "Dự án tiêu biểu",
     "documentsTitle": "Thư viện tài liệu",
-    "documentsText": "Hồ sơ năng lực và tài liệu giới thiệu công ty Realtek.",
+    "documentsText": "Hồ sơ năng lực và tài liệu giới thiệu công ty Realtek JSC.",
     "newsTitle": "Tin tức & sự kiện",
     "partnersTitle": "Đối tác tiêu biểu",
     "scroll": "Cuộn xuống",
     "productsTitle": "Đại lý & phân phối",
-    "productsText": "Realtek cung cấp, làm đại lý và phân phối thiết bị, phần mềm của {count} thương hiệu công nghệ.",
+    "productsText": "Realtek JSC cung cấp, làm đại lý và phân phối thiết bị, phần mềm của {count} thương hiệu công nghệ.",
     "productsMore": "Xem tất cả {count} thương hiệu",
     "productsLess": "Thu gọn"
   },
@@ -81,8 +81,8 @@
     "category": "Danh mục",
     "info": "Thông tin tài liệu",
     "related": "Tài liệu liên quan",
-    "aboutTitle": "Về Realtek Telecom",
-    "aboutText": "Realtek cung cấp dịch vụ tích hợp hệ thống ICT, hạ tầng mạng, trung tâm dữ liệu, tổng đài và điện nhẹ cho doanh nghiệp. Cần tư vấn thêm về nội dung tài liệu, hãy liên hệ đội ngũ kỹ thuật của chúng tôi.",
+    "aboutTitle": "Về Realtek JSC",
+    "aboutText": "Realtek JSC cung cấp dịch vụ tích hợp hệ thống ICT, hạ tầng mạng, trung tâm dữ liệu, tổng đài và điện nhẹ cho doanh nghiệp. Cần tư vấn thêm về nội dung tài liệu, hãy liên hệ đội ngũ kỹ thuật của chúng tôi.",
     "providers": {
       "onedrive": "OneDrive",
       "gdrive": "Google Drive"
@@ -90,7 +90,7 @@
   },
   "contact": {
     "title": "Liên hệ",
-    "intro": "Để lại thông tin, đội ngũ Realtek sẽ liên hệ lại trong thời gian sớm nhất.",
+    "intro": "Để lại thông tin, đội ngũ Realtek JSC sẽ liên hệ lại trong thời gian sớm nhất.",
     "formTitle": "Gửi yêu cầu tư vấn",
     "fullName": "Họ và tên",
     "phone": "Số điện thoại",
@@ -101,7 +101,7 @@
     "message": "Nội dung",
     "submit": "Gửi thông tin",
     "sending": "Đang gửi…",
-    "success": "Cảm ơn bạn. Realtek đã nhận được thông tin và sẽ liên hệ lại sớm.",
+    "success": "Cảm ơn bạn. Realtek JSC đã nhận được thông tin và sẽ liên hệ lại sớm.",
     "required": "Vui lòng nhập {field}.",
     "invalidPhone": "Số điện thoại không hợp lệ.",
     "invalidEmail": "Email không hợp lệ.",
@@ -138,7 +138,7 @@
   },
   "certificates": {
     "title": "Chứng chỉ & chứng nhận",
-    "text": "Các chứng chỉ và chứng nhận Realtek đã đạt được.",
+    "text": "Các chứng chỉ và chứng nhận Realtek JSC đã đạt được.",
     "more": "Xem thêm",
     "less": "Thu gọn",
     "close": "Đóng"

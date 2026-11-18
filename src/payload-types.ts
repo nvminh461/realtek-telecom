@@ -1282,11 +1282,11 @@ export interface SiteSetting {
   tagline?: string | null;
   description?: string | null;
   /**
-   * Để trống để dùng logo RealTek có sẵn. Dùng chung cho cả 3 ngôn ngữ.
+   * Để trống để dùng logo Realtek JSC có sẵn. Dùng chung cho cả 3 ngôn ngữ.
    */
   logo?: (string | null) | Media;
   /**
-   * Để trống để dùng biểu tượng chữ R của logo RealTek.
+   * Để trống để dùng biểu tượng chữ R của logo Realtek JSC.
    */
   favicon?: (string | null) | Media;
   taxCode?: string | null;

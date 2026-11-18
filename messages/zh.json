@@ -1,6 +1,6 @@
 {
   "meta": {
-    "siteName": "Realtek Telecom",
+    "siteName": "Realtek JSC",
     "defaultDescription": "Realtek 資訊電信股份有限公司——為越南及東協企業提供 ICT 系統整合、網路、資料中心、電話與弱電系統服務。"
   },
   "nav": {
@@ -46,23 +46,23 @@
     "exitDraft": "離開"
   },
   "home": {
-    "eyebrow": "Realtek Telecom",
+    "eyebrow": "Realtek JSC",
     "servicesTitle": "業務領域",
     "serviceNodes": "{count} 個項目",
     "projectsTitle": "代表專案",
     "documentsTitle": "文件庫",
-    "documentsText": "Realtek 公司簡介與公司介紹資料。",
+    "documentsText": "Realtek JSC 公司簡介與公司介紹資料。",
     "newsTitle": "新聞與活動",
     "partnersTitle": "主要合作夥伴",
     "scroll": "向下捲動",
     "productsTitle": "代理 / 經銷產品",
-    "productsText": "Realtek 供應、代理及經銷知名品牌的軟硬體產品。",
+    "productsText": "Realtek JSC 供應、代理及經銷知名品牌的軟硬體產品。",
     "productsMore": "查看全部 {count} 個品牌",
     "productsLess": "收合"
   },
   "documents": {
     "title": "文件庫",
-    "intro": "查閱 Realtek 公司簡介與公司介紹資料。每份資料在下載前皆有簡介頁面。",
+    "intro": "查閱 Realtek JSC 公司簡介與公司介紹資料。每份資料在下載前皆有簡介頁面。",
     "searchPlaceholder": "輸入資料名稱或關鍵字…",
     "search": "搜尋",
     "allCategories": "全部分類",
@@ -81,8 +81,8 @@
     "category": "分類",
     "info": "資料資訊",
     "related": "相關資料",
-    "aboutTitle": "關於 Realtek Telecom",
-    "aboutText": "Realtek 為企業提供 ICT 系統整合、網路、資料中心、電話與弱電系統服務。如需進一步了解資料內容，歡迎聯絡我們的技術團隊。",
+    "aboutTitle": "關於 Realtek JSC",
+    "aboutText": "Realtek JSC 為企業提供 ICT 系統整合、網路、資料中心、電話與弱電系統服務。如需進一步了解資料內容，歡迎聯絡我們的技術團隊。",
     "providers": {
       "onedrive": "OneDrive",
       "gdrive": "Google Drive"
@@ -90,7 +90,7 @@
   },
   "contact": {
     "title": "聯絡我們",
-    "intro": "請留下您的資料，Realtek 團隊將儘快與您聯繫。",
+    "intro": "請留下您的資料，Realtek JSC 團隊將儘快與您聯繫。",
     "formTitle": "諮詢表單",
     "fullName": "姓名",
     "phone": "電話",
@@ -101,7 +101,7 @@
     "message": "留言內容",
     "submit": "送出",
     "sending": "送出中…",
-    "success": "感謝您的留言，Realtek 將儘快與您聯繫。",
+    "success": "感謝您的留言，Realtek JSC 將儘快與您聯繫。",
     "required": "請輸入{field}。",
     "invalidPhone": "電話號碼無效。",
     "invalidEmail": "電子郵件地址無效。",
@@ -138,7 +138,7 @@
   },
   "certificates": {
     "title": "證書與認證",
-    "text": "Realtek 取得的各項證書與認證。",
+    "text": "Realtek JSC 取得的各項證書與認證。",
     "more": "顯示更多",
     "less": "收合",
     "close": "關閉"

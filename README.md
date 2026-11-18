@@ -1,4 +1,4 @@
-# Website Realtek Telecom
+# Website Realtek JSC
 
 Website giới thiệu doanh nghiệp và thư viện tài liệu trung gian của Công ty Cổ phần Tin học Viễn thông Realtek. Đặc tả yêu cầu và kế hoạch: [docs/SRS.md](docs/SRS.md).
 

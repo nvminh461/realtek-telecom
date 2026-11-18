@@ -16,7 +16,7 @@ export const SiteSettings: GlobalConfig = {
           label: 'Doanh nghiệp',
           fields: [
             { name: 'companyName', label: 'Tên công ty', type: 'text', localized: true, required: true },
-            { name: 'shortName', label: 'Tên ngắn', type: 'text', defaultValue: 'Realtek Telecom' },
+            { name: 'shortName', label: 'Tên ngắn', type: 'text', defaultValue: 'Realtek JSC' },
             { name: 'tagline', label: 'Khẩu hiệu', type: 'text', localized: true },
             { name: 'description', label: 'Giới thiệu ngắn (chân trang)', type: 'textarea', localized: true },
             {
@@ -27,14 +27,14 @@ export const SiteSettings: GlobalConfig = {
                   label: 'Logo',
                   type: 'upload',
                   relationTo: 'media',
-                  admin: { description: 'Để trống để dùng logo RealTek có sẵn. Dùng chung cho cả 3 ngôn ngữ.' },
+                  admin: { description: 'Để trống để dùng logo Realtek JSC có sẵn. Dùng chung cho cả 3 ngôn ngữ.' },
                 },
                 {
                   name: 'favicon',
                   label: 'Biểu tượng tab (favicon)',
                   type: 'upload',
                   relationTo: 'media',
-                  admin: { description: 'Để trống để dùng biểu tượng chữ R của logo RealTek.' },
+                  admin: { description: 'Để trống để dùng biểu tượng chữ R của logo Realtek JSC.' },
                 },
               ],
             },

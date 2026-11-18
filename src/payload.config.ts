@@ -44,7 +44,7 @@ export default buildConfig({
     user: Users.slug,
     importMap: { baseDir: path.resolve(dirname) },
     meta: {
-      titleSuffix: ' — Quản trị Realtek',
+      titleSuffix: ' — Quản trị Realtek JSC',
       icons: [{ rel: 'icon', type: 'image/png', url: '/brand/realtek-icon.png' }],
     },
     dateFormat: 'dd/MM/yyyy HH:mm',
@@ -99,7 +99,7 @@ export default buildConfig({
   email: process.env.SMTP_HOST
     ? nodemailerAdapter({
         defaultFromAddress: process.env.SMTP_FROM || 'no-reply@realtektelecom.com',
-        defaultFromName: 'Website Realtek Telecom',
+        defaultFromName: 'Website Realtek JSC',
         transportOptions: {
           host: process.env.SMTP_HOST,
           port: Number(process.env.SMTP_PORT || 587),

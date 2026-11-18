@@ -58,7 +58,7 @@ export default async function ContactPage({ params }: PageProps<'/[locale]/conta
       <PageHero
         locale={locale}
         title={t('title')}
-        eyebrow={settings.shortName || 'Realtek Telecom'}
+        eyebrow={settings.shortName || 'Realtek JSC'}
         lead={t('intro')}
         crumbs={[{ label: tn('home'), href: '/' }, { label: tn('contact') }]}
         placement="contact"

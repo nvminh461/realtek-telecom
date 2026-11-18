@@ -42,7 +42,7 @@ export async function buildMetadata({
   noIndex,
 }: Args): Promise<Metadata> {
   const [settings, origin] = await Promise.all([getSiteSettings(locale), getSiteUrl()])
-  const siteName = settings.shortName || 'Realtek Telecom'
+  const siteName = settings.shortName || 'Realtek JSC'
   const pageTitle = seo?.metaTitle || title || settings.defaultMetaTitle || siteName
   const pageDescription = seo?.metaDescription || description || settings.defaultMetaDescription || undefined
   const ogImage =

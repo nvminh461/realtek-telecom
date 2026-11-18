@@ -148,7 +148,7 @@ export default async function PostPage({ params }: PageProps<'/[locale]/news/[sl
           datePublished: post.publishedAt || post.createdAt,
           dateModified: post.updatedAt,
           mainEntityOfPage: url,
-          publisher: { '@type': 'Organization', name: settings.companyName || 'Realtek Telecom' },
+          publisher: { '@type': 'Organization', name: settings.companyName || 'Realtek JSC' },
         }}
       />
       <JsonLd

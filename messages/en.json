@@ -1,6 +1,6 @@
 {
   "meta": {
-    "siteName": "Realtek Telecom",
+    "siteName": "Realtek JSC",
     "defaultDescription": "Realtek Informatics Telecom JSC — ICT system integration, networking, data centers, telephony and ELV systems for businesses."
   },
   "nav": {
@@ -46,23 +46,23 @@
     "exitDraft": "Exit"
   },
   "home": {
-    "eyebrow": "Realtek Telecom",
+    "eyebrow": "Realtek JSC",
     "servicesTitle": "What we do",
     "serviceNodes": "{count, plural, one {# category} other {# categories}}",
     "projectsTitle": "Featured projects",
     "documentsTitle": "Document library",
-    "documentsText": "Realtek’s company profile and company introduction.",
+    "documentsText": "Realtek JSC’s company profile and company introduction.",
     "newsTitle": "News & events",
     "partnersTitle": "Featured partners",
     "scroll": "Scroll down",
     "productsTitle": "Brands we distribute",
-    "productsText": "Realtek supplies, represents and distributes hardware and software from {count} technology brands.",
+    "productsText": "Realtek JSC supplies, represents and distributes hardware and software from {count} technology brands.",
     "productsMore": "View all {count} brands",
     "productsLess": "Show less"
   },
   "documents": {
     "title": "Document library",
-    "intro": "Browse Realtek’s company profile and company introduction. Each document has an overview before you download it.",
+    "intro": "Browse Realtek JSC’s company profile and company introduction. Each document has an overview before you download it.",
     "searchPlaceholder": "Document name or keyword…",
     "search": "Search",
     "allCategories": "All categories",
@@ -81,8 +81,8 @@
     "category": "Category",
     "info": "Document details",
     "related": "Related documents",
-    "aboutTitle": "About Realtek Telecom",
-    "aboutText": "Realtek provides ICT system integration, networking, data centers, telephony and ELV systems for businesses. For advice on this document, contact our engineering team.",
+    "aboutTitle": "About Realtek JSC",
+    "aboutText": "Realtek JSC provides ICT system integration, networking, data centers, telephony and ELV systems for businesses. For advice on this document, contact our engineering team.",
     "providers": {
       "onedrive": "OneDrive",
       "gdrive": "Google Drive"
@@ -90,7 +90,7 @@
   },
   "contact": {
     "title": "Contact",
-    "intro": "Leave your details and the Realtek team will get back to you shortly.",
+    "intro": "Leave your details and the Realtek JSC team will get back to you shortly.",
     "formTitle": "Request a consultation",
     "fullName": "Full name",
     "phone": "Phone number",
@@ -101,7 +101,7 @@
     "message": "Message",
     "submit": "Send",
     "sending": "Sending…",
-    "success": "Thank you. Realtek has received your message and will contact you soon.",
+    "success": "Thank you. Realtek JSC has received your message and will contact you soon.",
     "required": "Please enter your {field}.",
     "invalidPhone": "Invalid phone number.",
     "invalidEmail": "Invalid email address.",
@@ -138,7 +138,7 @@
   },
   "certificates": {
     "title": "Certificates & accreditations",
-    "text": "Certifications and accreditations Realtek has earned.",
+    "text": "Certifications and accreditations Realtek JSC has earned.",
     "more": "Show more",
     "less": "Show less",
     "close": "Close"

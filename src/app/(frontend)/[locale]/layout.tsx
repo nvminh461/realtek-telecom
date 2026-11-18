@@ -95,7 +95,7 @@ export default async function LocaleLayout({ children, params }: LayoutProps<'/[
       }))
     : defaultNav
 
-  const name = settings.shortName || 'Realtek Telecom'
+  const name = settings.shortName || 'Realtek JSC'
   const logoImage = resolveImage(settings.logo) ?? { url: realtekLogo.src }
   const organization = {
     '@context': 'https://schema.org',

@@ -241,14 +241,14 @@ export const photoAlts: Record<PhotoKey, L> = {
     zh: '同奈省仁澤六工業區大塚正門',
   },
   certIso9001Vi: {
-    vi: 'Giấy chứng nhận ISO 9001:2015 của Realtek (tiếng Việt)',
-    en: 'Realtek ISO 9001:2015 certificate (Vietnamese)',
-    zh: 'Realtek ISO 9001:2015 證書（越南文版）',
+    vi: 'Giấy chứng nhận ISO 9001:2015 của Realtek JSC (tiếng Việt)',
+    en: 'Realtek JSC ISO 9001:2015 certificate (Vietnamese)',
+    zh: 'Realtek JSC ISO 9001:2015 證書（越南文版）',
   },
   certIso9001En: {
-    vi: 'Giấy chứng nhận ISO 9001:2015 của Realtek (tiếng Anh)',
-    en: 'Realtek ISO 9001:2015 certificate (English)',
-    zh: 'Realtek ISO 9001:2015 證書（英文版）',
+    vi: 'Giấy chứng nhận ISO 9001:2015 của Realtek JSC (tiếng Anh)',
+    en: 'Realtek JSC ISO 9001:2015 certificate (English)',
+    zh: 'Realtek JSC ISO 9001:2015 證書（英文版）',
   },
   certHikvisionPartner: {
     vi: 'Chứng nhận Đối tác giải pháp ủy quyền Hikvision 2024',
@@ -422,7 +422,7 @@ export const projects = [
     },
     content: {
       vi: projectDoc(
-        'Realtek triển khai hệ thống an ninh giám sát theo mô hình khu thương mại thông minh cho chuỗi AEON tại Việt Nam, trong đó có AEON MALL Hải Phòng Lê Chân, AEON MALL Hà Đông, AEON Bình Dương và AEON Nguyễn Văn Linh.',
+        'Realtek JSC triển khai hệ thống an ninh giám sát theo mô hình khu thương mại thông minh cho chuỗi AEON tại Việt Nam, trong đó có AEON MALL Hải Phòng Lê Chân, AEON MALL Hà Đông, AEON Bình Dương và AEON Nguyễn Văn Linh.',
         'Phạm vi công việc',
         [
           'Camera an ninh cho 8 trung tâm thương mại tại TP. Hồ Chí Minh, Bình Dương, Hà Nội và Hải Phòng',
@@ -430,7 +430,7 @@ export const projects = [
         ],
       ),
       en: projectDoc(
-        'Realtek deployed smart-campus security surveillance for AEON in Vietnam, including AEON MALL Hai Phong Le Chan, AEON MALL Ha Dong, AEON Binh Duong and AEON Nguyen Van Linh.',
+        'Realtek JSC deployed smart-campus security surveillance for AEON in Vietnam, including AEON MALL Hai Phong Le Chan, AEON MALL Ha Dong, AEON Binh Duong and AEON Nguyen Van Linh.',
         'Scope of work',
         [
           'Security surveillance for 8 shopping malls in Ho Chi Minh City, Binh Duong, Hanoi and Hai Phong',
@@ -438,7 +438,7 @@ export const projects = [
         ],
       ),
       zh: projectDoc(
-        'Realtek 為 AEON 永旺越南建置購物中心智慧園區安防監控，涵蓋 AEON MALL 海防黎真、AEON MALL 河東、AEON 平陽及 AEON 阮文靈等據點。',
+        'Realtek JSC 為 AEON 永旺越南建置購物中心智慧園區安防監控，涵蓋 AEON MALL 海防黎真、AEON MALL 河東、AEON 平陽及 AEON 阮文靈等據點。',
         '工作範圍',
         ['胡志明市、平陽、河內、海防等 8 座購物中心安防監控', '胡志明市 100 家 AEON 生活超市門市監控系統'],
       ),
@@ -464,17 +464,17 @@ export const projects = [
     },
     content: {
       vi: projectDoc(
-        'Compal là khách hàng mà đội ngũ sáng lập Realtek phục vụ từ năm 2001. Tại nhà máy miền Bắc Việt Nam ở KCN Bá Thiện (Vĩnh Phúc), Realtek xây dựng hạ tầng phòng máy.',
+        'Compal là khách hàng mà đội ngũ sáng lập Realtek JSC phục vụ từ năm 2001. Tại nhà máy miền Bắc Việt Nam ở KCN Bá Thiện (Vĩnh Phúc), Realtek JSC xây dựng hạ tầng phòng máy.',
         'Phạm vi công việc',
         ['Phòng máy dữ liệu', 'Hệ thống UPS', 'Hệ thống giám sát môi trường', 'Thi công cáp cấu trúc'],
       ),
       en: projectDoc(
-        'Compal has been served by Realtek’s founding team since 2001. At its northern Vietnam plant in Ba Thien Industrial Park (Vinh Phuc), Realtek built the server-room infrastructure.',
+        'Compal has been served by Realtek JSC’s founding team since 2001. At its northern Vietnam plant in Ba Thien Industrial Park (Vinh Phuc), Realtek JSC built the server-room infrastructure.',
         'Scope of work',
         ['Data room', 'UPS system', 'Environmental monitoring system', 'Structured cabling'],
       ),
       zh: projectDoc(
-        '仁寶是 Realtek 創始團隊自 2018 年起服務的客戶。Realtek 於仁寶北越廠（永福省 Bá Thiện 工業區）完成機房基礎建設。',
+        '仁寶是 Realtek JSC 創始團隊自 2018 年起服務的客戶。Realtek JSC 於仁寶北越廠（永福省 Bá Thiện 工業區）完成機房基礎建設。',
         '工作範圍',
         ['資料機房', 'UPS', '環控系統', '綜合佈線工程'],
       ),
@@ -504,22 +504,20 @@ export const projects = [
     },
     content: {
       vi: projectDoc(
-        'Tại nhà máy sản xuất pin của Hitachi Chemical ở KCN Nhơn Trạch (Đồng Nai), Realtek xây dựng toàn bộ hệ thống nền tảng.',
+        'Tại nhà máy sản xuất pin của Hitachi Chemical ở KCN Nhơn Trạch (Đồng Nai), Realtek JSC xây dựng toàn bộ hệ thống nền tảng.',
         'Phạm vi công việc',
         ['Hệ thống mạng', 'Hệ thống điện thoại', 'Camera giám sát', 'Hệ thống điện', 'Cáp cơ bản'],
       ),
       en: projectDoc(
-        'At Hitachi Chemical’s battery plant in Nhon Trach Industrial Park (Dong Nai), Realtek built all of the base systems.',
+        'At Hitachi Chemical’s battery plant in Nhon Trach Industrial Park (Dong Nai), Realtek JSC built all of the base systems.',
         'Scope of work',
         ['Network', 'Telephone system', 'CCTV surveillance', 'Power', 'Basic cabling'],
       ),
-      zh: projectDoc('Realtek 為 Hitachi Chemical 位於同奈省仁澤工業區的電池生產工廠完成全基礎系統建置。', '工作範圍', [
-        '網路',
-        '電話系統',
-        '監控',
-        '電力',
-        '基礎佈線',
-      ]),
+      zh: projectDoc(
+        'Realtek JSC 為 Hitachi Chemical 位於同奈省仁澤工業區的電池生產工廠完成全基礎系統建置。',
+        '工作範圍',
+        ['網路', '電話系統', '監控', '電力', '基礎佈線'],
+      ),
     },
   },
   {
@@ -542,7 +540,7 @@ export const projects = [
     },
     content: {
       vi: projectDoc(
-        'Realtek triển khai hạ tầng CNTT và điện nhẹ cho các nhà máy của Cymmetrik tại Việt Nam. Công ty cũng thực hiện phạm vi tương tự cho nhà máy Cymmetrik tại Thái Lan.',
+        'Realtek JSC triển khai hạ tầng CNTT và điện nhẹ cho các nhà máy của Cymmetrik tại Việt Nam. Công ty cũng thực hiện phạm vi tương tự cho nhà máy Cymmetrik tại Thái Lan.',
         'Phạm vi công việc',
         [
           'Bắc Ninh (KCN Yên Phong): phòng máy trung tâm dữ liệu, điện nhẹ, thiết bị mạng, tổng đài, kiểm soát ra vào – chấm công, camera an ninh',
@@ -550,17 +548,21 @@ export const projects = [
         ],
       ),
       en: projectDoc(
-        'Realtek delivered IT and ELV infrastructure for Cymmetrik’s plants in Vietnam, and a similar scope for its plant in Thailand.',
+        'Realtek JSC delivered IT and ELV infrastructure for Cymmetrik’s plants in Vietnam, and a similar scope for its plant in Thailand.',
         'Scope of work',
         [
           'Bac Ninh (Yen Phong Industrial Park): data-center room, ELV, network equipment, telephony, access control and attendance, security surveillance',
           'Binh Duong (Vietnam – Singapore Industrial Park): data room, plant-wide ELV, network equipment, telephony',
         ],
       ),
-      zh: projectDoc('Realtek 為正美科技越南各廠建置資訊與弱電基礎設施，並於泰國廠執行相同範圍的工程。', '工作範圍', [
-        '北寧（安豐工業區）：資料中心機房、弱電工程、網路設備、電話系統、門禁與考勤、安防監控系統',
-        '平陽（越南新加坡工業園區）：資料機房、全廠弱電工程、網路設備、電話系統',
-      ]),
+      zh: projectDoc(
+        'Realtek JSC 為正美科技越南各廠建置資訊與弱電基礎設施，並於泰國廠執行相同範圍的工程。',
+        '工作範圍',
+        [
+          '北寧（安豐工業區）：資料中心機房、弱電工程、網路設備、電話系統、門禁與考勤、安防監控系統',
+          '平陽（越南新加坡工業園區）：資料機房、全廠弱電工程、網路設備、電話系統',
+        ],
+      ),
     },
   },
   {
@@ -583,7 +585,7 @@ export const projects = [
     },
     content: {
       vi: projectDoc(
-        'Tại nhà máy MOWI ở KCN Long Bình (Amata), Đồng Nai, Realtek cải tạo toàn diện hạ tầng thông tin – truyền thông.',
+        'Tại nhà máy MOWI ở KCN Long Bình (Amata), Đồng Nai, Realtek JSC cải tạo toàn diện hạ tầng thông tin – truyền thông.',
         'Phạm vi công việc',
         [
           'Cải tạo hệ thống thông tin – truyền thông toàn khu nhà máy',
@@ -593,7 +595,7 @@ export const projects = [
         ],
       ),
       en: projectDoc(
-        'At MOWI’s plant in Long Binh (Amata) Industrial Park, Dong Nai, Realtek carried out a complete overhaul of the ICT infrastructure.',
+        'At MOWI’s plant in Long Binh (Amata) Industrial Park, Dong Nai, Realtek JSC carried out a complete overhaul of the ICT infrastructure.',
         'Scope of work',
         [
           'Plant-wide ICT system overhaul',
@@ -603,7 +605,7 @@ export const projects = [
         ],
       ),
       zh: projectDoc(
-        'Realtek 為美威位於同奈省 Long Bình（Amata）工業區的越南工廠進行資通訊基礎設施全面整改。',
+        'Realtek JSC 為美威位於同奈省 Long Bình（Amata）工業區的越南工廠進行資通訊基礎設施全面整改。',
         '工作範圍',
         ['全廠區資通訊系統整改', '資訊機房環境改善', '監控系統整改', '冷凍庫設備方案建置'],
       ),
@@ -633,7 +635,7 @@ export const projects = [
     },
     content: {
       vi: projectDoc(
-        'Realtek xây dựng toàn bộ hệ thống điện nhẹ cho nhà máy mới của Otsuka Techno tại miền Nam Việt Nam.',
+        'Realtek JSC xây dựng toàn bộ hệ thống điện nhẹ cho nhà máy mới của Otsuka Techno tại miền Nam Việt Nam.',
         'Phạm vi công việc',
         [
           'Hệ thống điện nhẹ toàn nhà máy',
@@ -644,11 +646,11 @@ export const projects = [
         ],
       ),
       en: projectDoc(
-        'Realtek built the complete ELV systems for Otsuka Techno’s new plant in southern Vietnam.',
+        'Realtek JSC built the complete ELV systems for Otsuka Techno’s new plant in southern Vietnam.',
         'Scope of work',
         ['Plant-wide ELV systems', 'Network', 'Telephone system', 'Access control', 'Security systems'],
       ),
-      zh: projectDoc('Realtek 為 Otsuka Techno 南越新廠完成全弱電系統建設。', '工作範圍', [
+      zh: projectDoc('Realtek JSC 為 Otsuka Techno 南越新廠完成全弱電系統建設。', '工作範圍', [
         '全廠弱電系統',
         '網路系統',
         '電話系統',
@@ -677,17 +679,17 @@ export const projects = [
     },
     content: {
       vi: projectDoc(
-        'Pou Chen là một trong những khách hàng mà đội ngũ sáng lập Realtek phục vụ từ trước năm 2011. Tại Pou Sung Việt Nam, Realtek triển khai hệ thống điện thoại Alcatel quy mô lớn.',
+        'Pou Chen là một trong những khách hàng mà đội ngũ sáng lập Realtek JSC phục vụ từ trước năm 2011. Tại Pou Sung Việt Nam, Realtek JSC triển khai hệ thống điện thoại Alcatel quy mô lớn.',
         'Phạm vi công việc',
         ['Hệ thống điện thoại Alcatel 3.000 máy nhánh'],
       ),
       en: projectDoc(
-        'Pou Chen is one of the groups Realtek’s founding team has served since before 2011. At Pou Sung Vietnam, Realtek deployed a large-scale Alcatel telephone system.',
+        'Pou Chen is one of the groups Realtek JSC’s founding team has served since before 2011. At Pou Sung Vietnam, Realtek JSC deployed a large-scale Alcatel telephone system.',
         'Scope of work',
         ['Alcatel telephone system with 3,000 extensions'],
       ),
       zh: projectDoc(
-        '寶成是 Realtek 創始團隊自 2011 年以前即服務的集團客戶。Realtek 於越南寶崧建置大型 Alcatel 電話系統。',
+        '寶成是 Realtek JSC 創始團隊自 2011 年以前即服務的集團客戶。Realtek JSC 於越南寶崧建置大型 Alcatel 電話系統。',
         '工作範圍',
         ['Alcatel 3,000 門電話系統'],
       ),
@@ -709,16 +711,16 @@ export const projects = [
     },
     content: {
       vi: projectDoc(
-        'Realtek lắp đặt và cấu hình thiết bị mạng cho toàn bộ khu nhà máy của PEGATRON tại KCN DEEP C, Hải Phòng.',
+        'Realtek JSC lắp đặt và cấu hình thiết bị mạng cho toàn bộ khu nhà máy của PEGATRON tại KCN DEEP C, Hải Phòng.',
         'Phạm vi công việc',
         ['Lắp đặt thiết bị mạng toàn khu nhà máy', 'Cấu hình và đưa vào vận hành'],
       ),
       en: projectDoc(
-        'Realtek installed and configured network equipment across PEGATRON’s entire plant site at DEEP C Industrial Zone, Hai Phong.',
+        'Realtek JSC installed and configured network equipment across PEGATRON’s entire plant site at DEEP C Industrial Zone, Hai Phong.',
         'Scope of work',
         ['Plant-wide network equipment installation', 'Configuration and commissioning'],
       ),
-      zh: projectDoc('Realtek 為和碩海防 DEEP C 工業區全廠區進行網路設備安裝與設定。', '工作範圍', [
+      zh: projectDoc('Realtek JSC 為和碩海防 DEEP C 工業區全廠區進行網路設備安裝與設定。', '工作範圍', [
         '全廠區網路設備安裝',
         '設定與上線',
       ]),
@@ -744,7 +746,7 @@ export const projects = [
     },
     content: {
       vi: projectDoc(
-        'Realtek xây dựng và bảo trì hạ tầng mạng cho hoạt động của Cathay United Bank tại Trung Quốc đại lục.',
+        'Realtek JSC xây dựng và bảo trì hạ tầng mạng cho hoạt động của Cathay United Bank tại Trung Quốc đại lục.',
         'Phạm vi công việc',
         [
           'Mạng lõi trung tâm dữ liệu và mạng trung tâm dự phòng',
@@ -754,7 +756,7 @@ export const projects = [
         ],
       ),
       en: projectDoc(
-        'Realtek builds and maintains the network infrastructure behind Cathay United Bank’s operations in mainland China.',
+        'Realtek JSC builds and maintains the network infrastructure behind Cathay United Bank’s operations in mainland China.',
         'Scope of work',
         [
           'Data-center core network and disaster-recovery network',
@@ -763,7 +765,7 @@ export const projects = [
           'Annual maintenance',
         ],
       ),
-      zh: projectDoc('Realtek 為國泰世華商業銀行中國大陸營運建置並維護網路基礎架構。', '工作範圍', [
+      zh: projectDoc('Realtek JSC 為國泰世華商業銀行中國大陸營運建置並維護網路基礎架構。', '工作範圍', [
         '資料中心核心網路、備援中心網路',
         '大陸各分行網路',
         '電話系統、SD-WAN、防火牆系統',
@@ -787,18 +789,16 @@ export const projects = [
     },
     content: {
       vi: projectDoc(
-        'Tại Thái Lan, Realtek xây dựng hạ tầng CNTT toàn diện cho nhà máy của ITEQ.',
+        'Tại Thái Lan, Realtek JSC xây dựng hạ tầng CNTT toàn diện cho nhà máy của ITEQ.',
         'Phạm vi công việc',
         ['Phòng máy CNTT toàn nhà máy', 'Điện nhẹ', 'Thiết bị mạng', 'Nền tảng ảo hóa', 'Hệ thống siêu hội tụ'],
       ),
-      en: projectDoc('In Thailand, Realtek built the complete IT infrastructure for ITEQ’s plant.', 'Scope of work', [
-        'Plant-wide IT room',
-        'ELV systems',
-        'Network equipment',
-        'Virtualization platform',
-        'Hyper-converged system',
-      ]),
-      zh: projectDoc('Realtek 於泰國為聯茂電子工廠建置完整資訊基礎架構。', '工作範圍', [
+      en: projectDoc(
+        'In Thailand, Realtek JSC built the complete IT infrastructure for ITEQ’s plant.',
+        'Scope of work',
+        ['Plant-wide IT room', 'ELV systems', 'Network equipment', 'Virtualization platform', 'Hyper-converged system'],
+      ),
+      zh: projectDoc('Realtek JSC 於泰國為聯茂電子工廠建置完整資訊基礎架構。', '工作範圍', [
         '全廠資訊機房',
         '弱電工程',
         '網通設備',
@@ -819,16 +819,20 @@ export const posts = [
     slug: 'realtek-launches-new-website',
     featuredImage: photo('teamTable'),
     category: 'company-news',
-    title: { vi: 'Realtek ra mắt website mới', en: 'Realtek launches its new website', zh: 'Realtek 新網站上線' },
+    title: {
+      vi: 'Realtek JSC ra mắt website mới',
+      en: 'Realtek JSC launches its new website',
+      zh: 'Realtek JSC 新網站上線',
+    },
     excerpt: {
-      vi: 'Website mới của Realtek có ba ngôn ngữ Việt, Anh, Trung, giới thiệu dịch vụ và dự án tiêu biểu, kèm thư viện tài liệu để tải hồ sơ năng lực và tài liệu giới thiệu công ty.',
-      en: 'Realtek’s new website is available in Vietnamese, English and Chinese, presents our services and selected projects, and includes a document library for the company profile and company introduction.',
-      zh: 'Realtek 新網站提供越南文、英文、中文三種語言，介紹服務項目與代表案例，並設有文件庫，供下載公司簡介與公司介紹資料。',
+      vi: 'Website mới của Realtek JSC có ba ngôn ngữ Việt, Anh, Trung, giới thiệu dịch vụ và dự án tiêu biểu, kèm thư viện tài liệu để tải hồ sơ năng lực và tài liệu giới thiệu công ty.',
+      en: 'Realtek JSC’s new website is available in Vietnamese, English and Chinese, presents our services and selected projects, and includes a document library for the company profile and company introduction.',
+      zh: 'Realtek JSC 新網站提供越南文、英文、中文三種語言，介紹服務項目與代表案例，並設有文件庫，供下載公司簡介與公司介紹資料。',
     },
     content: rich(
       [
         p(
-          'Realtek chính thức đưa vào hoạt động website mới, nơi khách hàng và đối tác có thể tìm hiểu về công ty, các dịch vụ tích hợp hệ thống ICT và điện nhẹ, các dự án tiêu biểu, đồng thời liên hệ trực tiếp với đội ngũ kinh doanh và kỹ thuật.',
+          'Realtek JSC chính thức đưa vào hoạt động website mới, nơi khách hàng và đối tác có thể tìm hiểu về công ty, các dịch vụ tích hợp hệ thống ICT và điện nhẹ, các dự án tiêu biểu, đồng thời liên hệ trực tiếp với đội ngũ kinh doanh và kỹ thuật.',
         ),
         h('Ba ngôn ngữ'),
         p(
@@ -843,13 +847,13 @@ export const posts = [
         ]),
         h('Liên hệ thuận tiện hơn'),
         p(
-          'Trang Liên hệ có biểu mẫu gửi yêu cầu tư vấn, cho phép chọn dịch vụ quan tâm; yêu cầu được chuyển đến đội ngũ Realtek để phản hồi. Khách hàng cũng có thể gọi 028 3830 2678 hoặc gửi email đến sales@realtektelecom.com.',
+          'Trang Liên hệ có biểu mẫu gửi yêu cầu tư vấn, cho phép chọn dịch vụ quan tâm; yêu cầu được chuyển đến đội ngũ Realtek JSC để phản hồi. Khách hàng cũng có thể gọi 028 3830 2678 hoặc gửi email đến sales@realtektelecom.com.',
         ),
         p('Mục Tin tức sẽ tiếp tục cập nhật hoạt động của công ty và các bài viết kỹ thuật hữu ích cho doanh nghiệp.'),
       ],
       [
         p(
-          'Realtek’s new website is now live. Customers and partners can learn about the company, our ICT and ELV system integration services and selected projects, and get in touch directly with our sales and engineering teams.',
+          'Realtek JSC’s new website is now live. Customers and partners can learn about the company, our ICT and ELV system integration services and selected projects, and get in touch directly with our sales and engineering teams.',
         ),
         h('Three languages'),
         p(
@@ -864,13 +868,13 @@ export const posts = [
         ]),
         h('Easier to reach us'),
         p(
-          'The Contact page has a consultation request form where you can choose the service you are interested in; requests are passed on to the Realtek team for a reply. You can also call 028 3830 2678 or email sales@realtektelecom.com.',
+          'The Contact page has a consultation request form where you can choose the service you are interested in; requests are passed on to the Realtek JSC team for a reply. You can also call 028 3830 2678 or email sales@realtektelecom.com.',
         ),
         p('The News section will keep sharing company updates and practical technical articles for businesses.'),
       ],
       [
         p(
-          'Realtek 新網站正式上線。客戶與合作夥伴可在此了解公司、ICT 與弱電系統整合服務及代表案例，並直接與我們的業務和技術團隊聯繫。',
+          'Realtek JSC 新網站正式上線。客戶與合作夥伴可在此了解公司、ICT 與弱電系統整合服務及代表案例，並直接與我們的業務和技術團隊聯繫。',
         ),
         h('三種語言'),
         p(
@@ -885,7 +889,7 @@ export const posts = [
         ]),
         h('聯繫更便利'),
         p(
-          '「聯絡我們」頁面設有諮詢表單，可選擇感興趣的服務項目，送出後將轉交 Realtek 團隊回覆。您也可以撥打 028 3830 2678 或寄信至 sales@realtektelecom.com。',
+          '「聯絡我們」頁面設有諮詢表單，可選擇感興趣的服務項目，送出後將轉交 Realtek JSC 團隊回覆。您也可以撥打 028 3830 2678 或寄信至 sales@realtektelecom.com。',
         ),
         p('「最新消息」單元將持續分享公司動態與實用的技術文章。'),
       ],
@@ -930,7 +934,7 @@ export const posts = [
           'Khảo sát sóng lại thay vì lắp điểm truy cập mới vào đúng vị trí cũ',
         ]),
         p(
-          'Với nhiều văn phòng, hệ thống Wi-Fi 6/6E vẫn đáp ứng tốt nhu cầu hiện tại; Wi-Fi 7 hợp lý nhất khi xây mới, mở rộng hoặc khi mạng hiện hữu đã quá tải. Liên hệ Realtek để được khảo sát và tư vấn phương án phù hợp.',
+          'Với nhiều văn phòng, hệ thống Wi-Fi 6/6E vẫn đáp ứng tốt nhu cầu hiện tại; Wi-Fi 7 hợp lý nhất khi xây mới, mở rộng hoặc khi mạng hiện hữu đã quá tải. Liên hệ Realtek JSC để được khảo sát và tư vấn phương án phù hợp.',
         ),
       ],
       [
@@ -957,7 +961,7 @@ export const posts = [
           'Run a new site survey rather than putting new access points in the old positions',
         ]),
         p(
-          'For many offices, Wi-Fi 6/6E still meets today’s needs; Wi-Fi 7 makes most sense for new builds, expansions or networks that are already overloaded. Contact Realtek for a site survey and advice on the right design.',
+          'For many offices, Wi-Fi 6/6E still meets today’s needs; Wi-Fi 7 makes most sense for new builds, expansions or networks that are already overloaded. Contact Realtek JSC for a site survey and advice on the right design.',
         ),
       ],
       [
@@ -984,7 +988,7 @@ export const posts = [
           '重新進行無線勘測，而不是把新基地台裝在舊位置',
         ]),
         p(
-          '對許多辦公室而言，Wi-Fi 6/6E 仍足以應付目前需求；Wi-Fi 7 最適合新建、擴建或現有網路已經超載的情況。歡迎聯繫 Realtek 安排現場勘測並提供合適的規劃建議。',
+          '對許多辦公室而言，Wi-Fi 6/6E 仍足以應付目前需求；Wi-Fi 7 最適合新建、擴建或現有網路已經超載的情況。歡迎聯繫 Realtek JSC 安排現場勘測並提供合適的規劃建議。',
         ),
       ],
     ),
@@ -1027,7 +1031,7 @@ export const posts = [
           'Với tủ mật độ cao, cân nhắc điều hòa làm mát theo hàng (in-row) đặt sát nguồn nhiệt',
         ]),
         p(
-          'Realtek thiết kế và triển khai phòng máy mô-đun, tủ rack, UPS, điều hòa và hệ thống giám sát môi trường. Liên hệ với chúng tôi để được đánh giá hiện trạng phòng máy của bạn.',
+          'Realtek JSC thiết kế và triển khai phòng máy mô-đun, tủ rack, UPS, điều hòa và hệ thống giám sát môi trường. Liên hệ với chúng tôi để được đánh giá hiện trạng phòng máy của bạn.',
         ),
       ],
       [
@@ -1053,7 +1057,7 @@ export const posts = [
           'For high-density racks, consider in-row cooling units placed close to the heat source',
         ]),
         p(
-          'Realtek designs and delivers modular server rooms, racks, UPS, cooling and environmental monitoring systems. Contact us for an assessment of your server room.',
+          'Realtek JSC designs and delivers modular server rooms, racks, UPS, cooling and environmental monitoring systems. Contact us for an assessment of your server room.',
         ),
       ],
       [
@@ -1078,7 +1082,7 @@ export const posts = [
           '定期清潔濾網與熱交換盤管，並檢查冷媒',
           '高密度機櫃可考慮貼近熱源的列間空調',
         ]),
-        p('Realtek 提供模組化機房、機櫃、UPS、空調與環境監控系統的規劃與建置。歡迎與我們聯繫，評估您的機房現況。'),
+        p('Realtek JSC 提供模組化機房、機櫃、UPS、空調與環境監控系統的規劃與建置。歡迎與我們聯繫，評估您的機房現況。'),
       ],
     ),
   },
@@ -1122,7 +1126,7 @@ export const posts = [
           'Chuẩn bị sẵn quy trình xử lý sự cố: liên hệ ai, cô lập thiết bị thế nào, khôi phục từ bản sao lưu nào',
         ]),
         p(
-          'Realtek cung cấp giải pháp an ninh mạng và dịch vụ quản trị hệ thống IT (MSP) cho doanh nghiệp. Liên hệ với chúng tôi nếu bạn cần đánh giá hiện trạng hệ thống.',
+          'Realtek JSC cung cấp giải pháp an ninh mạng và dịch vụ quản trị hệ thống IT (MSP) cho doanh nghiệp. Liên hệ với chúng tôi nếu bạn cần đánh giá hiện trạng hệ thống.',
         ),
       ],
       [
@@ -1150,7 +1154,7 @@ export const posts = [
           'Prepare an incident response procedure: who to call, how to isolate devices, which backup to restore from',
         ]),
         p(
-          'Realtek provides network security solutions and managed IT services (MSP) for businesses. Contact us if you need an assessment of your systems.',
+          'Realtek JSC provides network security solutions and managed IT services (MSP) for businesses. Contact us if you need an assessment of your systems.',
         ),
       ],
       [
@@ -1177,7 +1181,7 @@ export const posts = [
           '保存防火牆與伺服器的日誌，並留意告警',
           '事先制定事件應變流程：聯絡誰、如何隔離設備、從哪一份備份還原',
         ]),
-        p('Realtek 為企業提供網路資安解決方案與 IT 委外維運服務（MSP）。如需評估系統現況，歡迎與我們聯繫。'),
+        p('Realtek JSC 為企業提供網路資安解決方案與 IT 委外維運服務（MSP）。如需評估系統現況，歡迎與我們聯繫。'),
       ],
     ),
   },
@@ -1222,7 +1226,7 @@ export const posts = [
           '2024: chuyển đổi thành công ty cổ phần',
         ]),
         p(
-          'Realtek tiếp tục tư vấn, thiết kế, nhập khẩu, cung cấp, lắp đặt và bảo trì hệ thống công nghệ thông tin và điện nhẹ cho khách hàng tại Việt Nam và khu vực.',
+          'Realtek JSC tiếp tục tư vấn, thiết kế, nhập khẩu, cung cấp, lắp đặt và bảo trì hệ thống công nghệ thông tin và điện nhẹ cho khách hàng tại Việt Nam và khu vực.',
         ),
       ],
       [
@@ -1250,7 +1254,7 @@ export const posts = [
           '2024: converted into a joint stock company',
         ]),
         p(
-          'Realtek continues to consult on, design, import, supply, install and maintain IT and ELV systems for customers in Vietnam and the region.',
+          'Realtek JSC continues to consult on, design, import, supply, install and maintain IT and ELV systems for customers in Vietnam and the region.',
         ),
       ],
       [
@@ -1277,7 +1281,7 @@ export const posts = [
           '2023 年：於泰國成立公司',
           '2024 年：改制為股份有限公司',
         ]),
-        p('Realtek 將持續為越南及區域客戶提供資訊與弱電系統的顧問、設計、進口、供應、安裝與維護服務。'),
+        p('Realtek JSC 將持續為越南及區域客戶提供資訊與弱電系統的顧問、設計、進口、供應、安裝與維護服務。'),
       ],
     ),
   },
@@ -1287,14 +1291,14 @@ export const posts = [
     category: 'company-news',
     date: '2024-09-17T08:00:00.000Z', // issue date on the ISOCERT certificate
     title: {
-      vi: 'Realtek đạt chứng nhận ISO 9001:2015',
-      en: 'Realtek achieves ISO 9001:2015 certification',
-      zh: 'Realtek 取得 ISO 9001:2015 認證',
+      vi: 'Realtek JSC đạt chứng nhận ISO 9001:2015',
+      en: 'Realtek JSC achieves ISO 9001:2015 certification',
+      zh: 'Realtek JSC 取得 ISO 9001:2015 認證',
     },
     excerpt: {
-      vi: 'Ngày 17/09/2024, hệ thống quản lý chất lượng của Realtek được ISOCERT chứng nhận phù hợp tiêu chuẩn ISO 9001:2015, hiệu lực đến 16/09/2027.',
-      en: 'On 17 September 2024, ISOCERT certified Realtek’s quality management system to ISO 9001:2015; the certificate is valid until 16 September 2027.',
-      zh: '2024 年 9 月 17 日，Realtek 的品質管理系統通過 ISOCERT 驗證，符合 ISO 9001:2015 標準，證書有效期至 2027 年 9 月 16 日。',
+      vi: 'Ngày 17/09/2024, hệ thống quản lý chất lượng của Realtek JSC được ISOCERT chứng nhận phù hợp tiêu chuẩn ISO 9001:2015, hiệu lực đến 16/09/2027.',
+      en: 'On 17 September 2024, ISOCERT certified Realtek JSC’s quality management system to ISO 9001:2015; the certificate is valid until 16 September 2027.',
+      zh: '2024 年 9 月 17 日，Realtek JSC 的品質管理系統通過 ISOCERT 驗證，符合 ISO 9001:2015 標準，證書有效期至 2027 年 9 月 16 日。',
     },
     content: rich(
       [
@@ -1303,7 +1307,7 @@ export const posts = [
         ),
         h('Phạm vi chứng nhận'),
         p(
-          'Tư vấn, thiết kế, nhập khẩu, kinh doanh, lắp đặt và bảo trì hệ thống công nghệ thông tin và hệ thống điện nhẹ, tức toàn bộ chuỗi công việc Realtek thực hiện cho khách hàng, từ khảo sát nhu cầu đến bảo trì sau bàn giao.',
+          'Tư vấn, thiết kế, nhập khẩu, kinh doanh, lắp đặt và bảo trì hệ thống công nghệ thông tin và hệ thống điện nhẹ, tức toàn bộ chuỗi công việc Realtek JSC thực hiện cho khách hàng, từ khảo sát nhu cầu đến bảo trì sau bàn giao.',
         ),
         h('ISO 9001:2015 là gì'),
         p(
@@ -1323,7 +1327,7 @@ export const posts = [
         ),
         h('Scope of certification'),
         p(
-          'Consulting, designing, importing, trading, installing and maintaining information technology and low-voltage (ELV) electrical systems: the full range of work Realtek carries out for customers, from assessing needs to maintenance after handover.',
+          'Consulting, designing, importing, trading, installing and maintaining information technology and low-voltage (ELV) electrical systems: the full range of work Realtek JSC carries out for customers, from assessing needs to maintenance after handover.',
         ),
         h('What ISO 9001:2015 is'),
         p(
@@ -1343,7 +1347,7 @@ export const posts = [
         ),
         h('驗證範圍'),
         p(
-          '資訊系統與弱電系統的顧問、設計、進口、銷售、安裝與維護，涵蓋 Realtek 為客戶執行的完整工作流程，從需求評估到交付後的維護。',
+          '資訊系統與弱電系統的顧問、設計、進口、銷售、安裝與維護，涵蓋 Realtek JSC 為客戶執行的完整工作流程，從需求評估到交付後的維護。',
         ),
         h('什麼是 ISO 9001:2015'),
         p(
@@ -1373,9 +1377,9 @@ export const documents = [
     pageCount: 28,
     provider: 'gdrive',
     title: {
-      vi: 'Hồ sơ năng lực Realtek Telecom',
-      en: 'Realtek Telecom company profile',
-      zh: 'Realtek Telecom 公司簡介',
+      vi: 'Hồ sơ năng lực Realtek JSC',
+      en: 'Realtek JSC company profile',
+      zh: 'Realtek JSC 公司簡介',
     },
     summary: {
       vi: 'Hồ sơ năng lực song ngữ Việt – Anh (28 trang) của Công ty Cổ phần Tin học Viễn thông Realtek: thông tin công ty, lịch sử hình thành, dịch vụ, cơ sở pháp lý và chứng chỉ, năng lực nhân sự, đối tác và dự án tiêu biểu.',
@@ -1447,9 +1451,9 @@ export const documents = [
     pageCount: 14,
     provider: 'gdrive',
     title: {
-      vi: 'Giới thiệu công ty Realtek 2026 (tiếng Trung)',
-      en: 'Realtek company introduction 2026 (Chinese)',
-      zh: 'RealTek 公司介紹 2026',
+      vi: 'Giới thiệu công ty Realtek JSC 2026 (tiếng Trung)',
+      en: 'Realtek JSC company introduction 2026 (Chinese)',
+      zh: 'Realtek JSC 公司介紹 2026',
     },
     summary: {
       vi: 'Bộ slide giới thiệu công ty bằng tiếng Trung phồn thể (14 slide): văn phòng và lịch sử, phạm vi dịch vụ, khu công nghiệp thông minh, kiến trúc mạng, chứng nhận, thương hiệu phân phối và dự án tại Trung Quốc, Việt Nam, Thái Lan.',
@@ -1459,7 +1463,7 @@ export const documents = [
     content: rich(
       [
         p(
-          'Bộ slide giới thiệu Realtek bằng tiếng Trung phồn thể, dùng khi làm việc với khách hàng và đối tác nói tiếng Trung.',
+          'Bộ slide giới thiệu Realtek JSC bằng tiếng Trung phồn thể, dùng khi làm việc với khách hàng và đối tác nói tiếng Trung.',
         ),
         h('Nội dung chính'),
         ul([
@@ -1470,11 +1474,11 @@ export const documents = [
           'Ngành khách hàng và dự án tiêu biểu tại Trung Quốc, Việt Nam, Thái Lan',
         ]),
         h('Dành cho'),
-        p('Khách hàng, chủ đầu tư và đối tác đọc tiếng Trung muốn tìm hiểu nhanh năng lực của Realtek.'),
+        p('Khách hàng, chủ đầu tư và đối tác đọc tiếng Trung muốn tìm hiểu nhanh năng lực của Realtek JSC.'),
       ],
       [
         p(
-          'Realtek’s company introduction deck in Traditional Chinese, used with Chinese-speaking customers and partners.',
+          'Realtek JSC’s company introduction deck in Traditional Chinese, used with Chinese-speaking customers and partners.',
         ),
         h('Contents'),
         ul([
@@ -1486,11 +1490,11 @@ export const documents = [
         ]),
         h('Intended for'),
         p(
-          'Chinese-reading customers, project owners and partners who want a quick overview of Realtek’s capabilities.',
+          'Chinese-reading customers, project owners and partners who want a quick overview of Realtek JSC’s capabilities.',
         ),
       ],
       [
-        p('Realtek 的繁體中文公司介紹簡報，適用於與華語客戶及合作夥伴洽談。'),
+        p('Realtek JSC 的繁體中文公司介紹簡報，適用於與華語客戶及合作夥伴洽談。'),
         h('內容'),
         ul([
           '臺灣、中國大陸、越南、泰國據點與發展沿革',
@@ -1500,7 +1504,7 @@ export const documents = [
           '客戶產業分布，以及中國大陸、越南、泰國的客戶案例',
         ]),
         h('適用對象'),
-        p('希望快速了解 Realtek 能力的華語客戶、業主與合作夥伴。'),
+        p('希望快速了解 Realtek JSC 能力的華語客戶、業主與合作夥伴。'),
       ],
     ),
     keywords: {
@@ -1783,16 +1787,16 @@ export const siteSettings = {
     // The documents give no Chinese name; this rendering must be approved. Never 瑞昱 (Realtek Semiconductor).
     zh: 'Realtek 資訊電信股份有限公司',
   },
-  shortName: 'Realtek Telecom',
+  shortName: 'Realtek JSC',
   tagline: {
     vi: 'Tích hợp hệ thống ICT chuyên nghiệp',
     en: 'Professional ICT system integration',
     zh: '專業 ICT 系統整合',
   },
   description: {
-    vi: 'Realtek tư vấn, thiết kế, cung cấp, lắp đặt và bảo trì hệ thống công nghệ thông tin và điện nhẹ cho doanh nghiệp tại Việt Nam và khu vực ASEAN.',
-    en: 'Realtek consults on, designs, supplies, installs and maintains IT and ELV systems for businesses in Vietnam and across ASEAN.',
-    zh: 'Realtek 為越南及東協企業提供資訊與弱電系統的顧問、設計、供應、安裝與維護服務。',
+    vi: 'Realtek JSC tư vấn, thiết kế, cung cấp, lắp đặt và bảo trì hệ thống công nghệ thông tin và điện nhẹ cho doanh nghiệp tại Việt Nam và khu vực ASEAN.',
+    en: 'Realtek JSC consults on, designs, supplies, installs and maintains IT and ELV systems for businesses in Vietnam and across ASEAN.',
+    zh: 'Realtek JSC 為越南及東協企業提供資訊與弱電系統的顧問、設計、供應、安裝與維護服務。',
   },
   taxCode: '0314140632',
   address,
@@ -1802,14 +1806,14 @@ export const siteSettings = {
   mapLink: `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent('Vincom Center, 72 Lê Thánh Tôn, TP. Hồ Chí Minh')}`,
   mapEmbedUrl: `https://www.google.com/maps?q=${encodeURIComponent('Vincom Center, 72 Lê Thánh Tôn, TP. Hồ Chí Minh')}&output=embed`,
   defaultMetaTitle: {
-    vi: 'Realtek Telecom — Tích hợp hệ thống ICT & điện nhẹ',
-    en: 'Realtek Telecom — ICT & ELV system integration',
-    zh: 'Realtek — ICT 與弱電系統整合',
+    vi: 'Realtek JSC — Tích hợp hệ thống ICT & điện nhẹ',
+    en: 'Realtek JSC — ICT & ELV system integration',
+    zh: 'Realtek JSC — ICT 與弱電系統整合',
   },
   defaultMetaDescription: {
     vi: 'Công ty Cổ phần Tin học Viễn thông Realtek: hạ tầng mạng, trung tâm dữ liệu, tổng đài, an ninh mạng, điện nhẹ và dịch vụ MSP cho doanh nghiệp tại Việt Nam và ASEAN. Chứng nhận ISO 9001:2015.',
     en: 'Realtek Informatics Telecom JSC: networking, data centers, telephony, security, ELV systems and managed services for businesses in Vietnam and ASEAN. ISO 9001:2015 certified.',
-    zh: 'Realtek 為越南及東協企業提供網路、資料中心、電話系統、資安、弱電工程與 MSP 維運服務，通過 ISO 9001:2015 認證。',
+    zh: 'Realtek JSC 為越南及東協企業提供網路、資料中心、電話系統、資安、弱電工程與 MSP 維運服務，通過 ISO 9001:2015 認證。',
   },
   defaultOgImage: photo('earth'),
 }
@@ -1818,16 +1822,16 @@ export const siteSettings = {
 
 export const homePage = {
   intro: {
-    eyebrow: { vi: 'Về Realtek', en: 'About Realtek', zh: '關於 Realtek' },
+    eyebrow: { vi: 'Về Realtek JSC', en: 'About Realtek JSC', zh: '關於 Realtek JSC' },
     heading: {
       vi: 'Tích hợp hệ thống ICT cho doanh nghiệp tại Việt Nam và ASEAN',
       en: 'ICT system integration for businesses in Vietnam and ASEAN',
       zh: '服務越南與東協企業的 ICT 系統整合商',
     },
     text: {
-      vi: 'Realtek tư vấn, thiết kế, cung cấp, lắp đặt và bảo trì hệ thống công nghệ thông tin và điện nhẹ — mạng, trung tâm dữ liệu, tổng đài, camera an ninh — cho nhà máy, ngân hàng, chuỗi bán lẻ và văn phòng. Đội ngũ sáng lập đã đồng hành cùng các tập đoàn điện tử như Compal, Wistron và LiteOn từ năm 2001.',
-      en: 'Realtek consults on, designs, supplies, installs and maintains IT and ELV systems — networks, data centers, telephony and security — for factories, banks, retailers and offices. Our founding team has worked with electronics groups such as Compal, Wistron and LITEON since 2001.',
-      zh: 'Realtek 為工廠、銀行、零售與辦公室提供資訊與弱電系統——網路、資料中心、電話與安防——的顧問、設計、供應、安裝與維護。創始團隊自 2018 年起即服務仁寶、緯創、光寶等電子集團。',
+      vi: 'Realtek JSC tư vấn, thiết kế, cung cấp, lắp đặt và bảo trì hệ thống công nghệ thông tin và điện nhẹ — mạng, trung tâm dữ liệu, tổng đài, camera an ninh — cho nhà máy, ngân hàng, chuỗi bán lẻ và văn phòng. Đội ngũ sáng lập đã đồng hành cùng các tập đoàn điện tử như Compal, Wistron và LiteOn từ năm 2001.',
+      en: 'Realtek JSC consults on, designs, supplies, installs and maintains IT and ELV systems — networks, data centers, telephony and security — for factories, banks, retailers and offices. Our founding team has worked with electronics groups such as Compal, Wistron and LITEON since 2001.',
+      zh: 'Realtek JSC 為工廠、銀行、零售與辦公室提供資訊與弱電系統——網路、資料中心、電話與安防——的顧問、設計、供應、安裝與維護。創始團隊自 2018 年起即服務仁寶、緯創、光寶等電子集團。',
     },
     image: photo('meeting'),
     link: { label: { vi: 'Tìm hiểu thêm', en: 'Learn more', zh: '了解更多' }, url: '/about' },
@@ -1969,9 +1973,9 @@ const lines = (vi: string[], en: string[], zh: string[]): L => ({
 const years = (n: number): L => ({ vi: `${n} năm kinh nghiệm`, en: `${n} years of experience`, zh: `${n} 年經驗` })
 
 const teamIntro: L = {
-  vi: 'Realtek có 27 nhân sự: 16 kỹ thuật, 4 kinh doanh, 4 nền tảng và 3 quản lý dự án. Các chuyên gia có từ 16 đến 28 năm kinh nghiệm về mạng, tổng đài và hạ tầng ICT.',
-  en: 'Realtek has 27 staff: 16 technical, 4 sales, 4 platform and 3 project managers. Our specialists bring 16 to 28 years of experience in networking, telephony and ICT infrastructure.',
-  zh: 'Realtek 現有員工 27 人：技術 16 人、業務 4 人、平臺 4 人、PM 3 人。專家團隊在網路、電話系統與 ICT 基礎架構領域擁有 16 至 28 年經驗。',
+  vi: 'Realtek JSC có 27 nhân sự: 16 kỹ thuật, 4 kinh doanh, 4 nền tảng và 3 quản lý dự án. Các chuyên gia có từ 16 đến 28 năm kinh nghiệm về mạng, tổng đài và hạ tầng ICT.',
+  en: 'Realtek JSC has 27 staff: 16 technical, 4 sales, 4 platform and 3 project managers. Our specialists bring 16 to 28 years of experience in networking, telephony and ICT infrastructure.',
+  zh: 'Realtek JSC 現有員工 27 人：技術 16 人、業務 4 人、平臺 4 人、PM 3 人。專家團隊在網路、電話系統與 ICT 基礎架構領域擁有 16 至 28 年經驗。',
 }
 
 const teams = [
@@ -2192,7 +2196,7 @@ export const certificates: CertificateEntry[] = [
 ]
 
 export const aboutPage = {
-  heading: { vi: 'Về Realtek', en: 'About Realtek', zh: '關於 Realtek' },
+  heading: { vi: 'Về Realtek JSC', en: 'About Realtek JSC', zh: '關於 Realtek JSC' },
   lead: {
     vi: 'Công ty Cổ phần Tin học Viễn thông Realtek (REALTEK JSC) chuyên tích hợp hệ thống và cung cấp dịch vụ ICT chuyên nghiệp, lấy Việt Nam làm trung tâm phục vụ khách hàng doanh nghiệp khu vực ASEAN.',
     en: 'Realtek Informatics Telecom JSC (REALTEK JSC) specializes in ICT system integration and professional ICT services, with Vietnam as its hub for enterprise clients across ASEAN.',
@@ -2224,7 +2228,7 @@ export const aboutPage = {
       ]),
       h('Năng lực điều hành'),
       p(
-        'Với mạng lưới hoạt động tại Đài Loan, Trung Quốc, Việt Nam và khu vực ASEAN, Realtek đáp ứng nhanh chóng và an toàn nhu cầu của khách hàng trong chuỗi ứng dụng toàn cầu, dựa trên bốn nguyên tắc:',
+        'Với mạng lưới hoạt động tại Đài Loan, Trung Quốc, Việt Nam và khu vực ASEAN, Realtek JSC đáp ứng nhanh chóng và an toàn nhu cầu của khách hàng trong chuỗi ứng dụng toàn cầu, dựa trên bốn nguyên tắc:',
       ),
       ul([
         'Giá trị từ thiết kế: tối ưu trải nghiệm và gia tăng giá trị ngay từ bản thiết kế',
@@ -2262,7 +2266,7 @@ export const aboutPage = {
       ]),
       h('How we deliver'),
       p(
-        'With a presence in Taiwan, China, Vietnam and across ASEAN, Realtek responds quickly and safely to clients’ needs across global supply chains, guided by four principles:',
+        'With a presence in Taiwan, China, Vietnam and across ASEAN, Realtek JSC responds quickly and safely to clients’ needs across global supply chains, guided by four principles:',
       ),
       ul([
         'Value from design: optimizing the experience and adding value from the first drawing',
@@ -2280,7 +2284,7 @@ export const aboutPage = {
       h('致客戶與合作夥伴'),
       p('親愛的客戶與合作夥伴：'),
       p(
-        'Realtek 以身為資訊與通訊系統服務供應商為榮，專注於在亞洲設計、安裝與開發專業 IT 解決方案。秉持長遠願景與用心，我們致力提供全面且有效、貼合每位客戶需求的解決方案。',
+        'Realtek JSC 以身為資訊與通訊系統服務供應商為榮，專注於在亞洲設計、安裝與開發專業 IT 解決方案。秉持長遠願景與用心，我們致力提供全面且有效、貼合每位客戶需求的解決方案。',
       ),
       p(
         '我們運用先進技術，協助金融、零售、半導體設計、醫療照護等眾多產業解決複雜課題。一個個成功專案，證明了 REALTEK JSC 的實力與客戶給予的信任。',
@@ -2295,7 +2299,9 @@ export const aboutPage = {
       h('使命'),
       ul(['提供全方位 IT 解決方案', '與客戶攜手成長', '推動資通訊產業發展']),
       h('執行能力'),
-      p('Realtek 據點遍及臺灣、中國大陸、越南與東協地區，能快速且安全地回應客戶在全球供應鏈中的需求，並堅守四項原則：'),
+      p(
+        'Realtek JSC 據點遍及臺灣、中國大陸、越南與東協地區，能快速且安全地回應客戶在全球供應鏈中的需求，並堅守四項原則：',
+      ),
       ul([
         '價值始於設計：從設計階段即優化體驗、創造價值',
         '建置經過驗證：以驗證過的流程確保效率與可靠性',
@@ -2317,15 +2323,6 @@ export const aboutPage = {
     { title: { vi: 'Chính trực và trách nhiệm', en: 'Integrity & responsibility', zh: '誠信與責任' }, text: null },
   ],
   milestones: [
-    {
-      year: '2001',
-      title: { vi: 'Khởi nguồn tại Đài Loan', en: 'Roots in Taiwan', zh: '源自臺灣' },
-      text: {
-        vi: 'Thành lập SunNet Telecom tại Đài Loan, cung cấp sản phẩm Nortel, Cisco, Euphony, BlueCoat và bắt đầu phục vụ Compal, Wistron, LITEON.',
-        en: 'SunNet Telecom founded in Taiwan, supplying Nortel, Cisco, Euphony and BlueCoat and starting to serve Compal, Wistron and LITEON.',
-        zh: 'SunNet Telecom 於臺灣成立，代理 Nortel、Cisco、Euphony、BlueCoat 產品，開始服務仁寶、緯創、光寶。',
-      },
-    },
     {
       year: '2011',
       title: { vi: 'Thành lập công ty tại Côn Sơn', en: 'Kunshan company founded', zh: '昆山睿宏成立' },

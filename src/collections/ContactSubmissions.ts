@@ -140,7 +140,7 @@ export const ContactSubmissions: CollectionConfig = {
         })
 
         const workbook = new ExcelJS.Workbook()
-        workbook.creator = 'Realtek Telecom'
+        workbook.creator = 'Realtek JSC'
         const sheet = workbook.addWorksheet('Liên hệ')
         sheet.columns = [
           { header: 'Thời gian', key: 'createdAt', width: 20 },
